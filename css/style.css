@@ -9893,5 +9893,9 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.pied {
+  /* display:flex;*/
+  /*   position:fixed;*/
+}
 
 /*# sourceMappingURL=style.css.map */

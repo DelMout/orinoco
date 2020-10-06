@@ -36,3 +36,5 @@ app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
 
 module.exports = app;
+
+
