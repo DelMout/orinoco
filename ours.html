@@ -44,17 +44,47 @@
     <!-- PRODUIT -->
     <div class="container my-3">
         <div class="row">
-            <div class="text-center text-primary font-weight-bold mx-auto">
+            <div class="text-center text-primary font-weight-bold m-auto my-5">
                 <h1>
                     Ours en peluche faits main
                 </h1>
             </div>
-            <div id="tabl">
+        </div>
+        <div id="choix" class="row text-left mx-auto my-5">
+            <form>
+                <div class="form-group">
+                    <label for="choix-article">Choisissez votre ours en peluche fait main :</label>
+                    <select name="articles" id="choix-article">
+                        <option value="ch1" class="nom-article">choix 1</option>
+                        <option value="ch2" class="nom-article">choix 2</option>
+                        <option value="ch3" class="nom-article"></option>
+                        <option value="ch4" class="nom-article"></option>
+                        <option value="ch5" class="nom-article"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
+                    <select name="couleurs" id="choix-couleur">
+                        <option value="ch1" class="couleur">choix 1</option>
+                        <option value="ch2" class="couleur">choix 2</option>
+                        <option value="ch3" class="couleur"></option>
+                        <option value="ch4" class="couleur"></option>
+                        <option value="ch5" class="couleur"></option>
+                    </select>
+                </div>
+            </form>
+        </div>
 
+        <div class="row">
+            <div class="photo">
+                <!-- ici la photo de l'article selectionne -->
             </div>
-
+            <div class="prix">
+                Prix :<span></span>
+            </div>
         </div>
     </div>
+    
 
 
     <!-- PIED DE PAGE -->

@@ -2,11 +2,13 @@ const uuid = require('uuid/v1');
 const Teddy = require('../models/Teddy');
 
 exports.getAllTeddies = (req, res, next) => {
-  Teddy.find().then(
+    
+    Teddy.find().then(
     (teddies) => {
       const mappedTeddies = teddies.map((teddy) => {
         teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-        return teddy;
+          return teddy;
+          
       });
       res.status(200).json(mappedTeddies);
     }
