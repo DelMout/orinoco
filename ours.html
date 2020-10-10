@@ -54,9 +54,10 @@
             <form>
                 <div class="form-group">
                     <label for="choix-article">Choisissez votre ours en peluche fait main :</label>
-                    <select name="articles" id="choix-article">
-                        <option value="ch1" class="nom-article">choix 1</option>
-                        <option value="ch2" class="nom-article">choix 2</option>
+                    <select name="articles" id="choix-article" class="form-control">
+                        <option value="sel" class="selectionnez">Sélectionnez un article</option>
+                        <option value="ch1" class="nom-article"></option>
+                        <option value="ch2" class="nom-article"></option>
                         <option value="ch3" class="nom-article"></option>
                         <option value="ch4" class="nom-article"></option>
                         <option value="ch5" class="nom-article"></option>
@@ -64,55 +65,59 @@
                 </div>
                 <div class="form-group">
                     <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
-                    <select name="couleurs" id="choix-couleur">
-                        <option value="ch1" class="couleur">choix 1</option>
-                        <option value="ch2" class="couleur">choix 2</option>
+                    <select name="couleurs" id="choix-couleur" class="form-control">
+                        <option value="sel" class="couleur">Sélectionnez une couleur</option>
+                        <option value="ch1" class="couleur"></option>
+                        <option value="ch2" class="couleur"></option>
                         <option value="ch3" class="couleur"></option>
                         <option value="ch4" class="couleur"></option>
-                        <option value="ch5" class="couleur"></option>
                     </select>
                 </div>
             </form>
         </div>
+        <div class="row" id="selection">
+
+        </div>
+
 
         <div class="row">
-            <div class="photo">
-                <!-- ici la photo de l'article selectionne -->
-            </div>
-            <div class="prix">
-                Prix :<span></span>
-            </div>
-        </div>
-    </div>
-    
-
-
-    <!-- PIED DE PAGE -->
-    <footer>
-        <div class="container-fluid bg-info p-4">
-            <div class="row">
-                <div class="col">
-                    <nav class="col navbar navbar-expand navbar-light">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Mentions légales</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contactez-nous</a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="photo">
+                    <!-- ici la photo de l'article selectionne -->
+                </div>
+                <div class="prix">
+                    Prix :<span></span>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Liens vers bibliothèques -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <!-- Liens vers API ours -->
-    
-    <script type="text/javascript" src="ours.js"></script>
+
+
+        <!-- PIED DE PAGE -->
+        <footer>
+            <div class="container-fluid bg-info p-4">
+                <div class="row">
+                    <div class="col">
+                        <nav class="col navbar navbar-expand navbar-light">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Mentions légales</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contactez-nous</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Liens vers bibliothèques -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <!-- Liens vers API ours -->
+
+        <script type="text/javascript" src="ours.js"></script>
 
 </body>
 </html>
