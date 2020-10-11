@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label for="choix-article">Choisissez votre ours en peluche fait main :</label>
                     <select name="articles" id="choix-article" class="form-control">
-                        <option value="sel" class="selectionnez">Sélectionnez un article</option>
+                        <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
                         <option value="ch1" class="nom-article"></option>
                         <option value="ch2" class="nom-article"></option>
                         <option value="ch3" class="nom-article"></option>
@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
                     <select name="couleurs" id="choix-couleur" class="form-control">
-                        <option value="sel" class="couleur">Sélectionnez une couleur</option>
+                        <option value="sel" disabled selected class="couleur">Sélectionnez une couleur</option>
                         <option value="ch1" class="couleur"></option>
                         <option value="ch2" class="couleur"></option>
                         <option value="ch3" class="couleur"></option>
@@ -84,8 +84,8 @@
                 <div class="photo">
                     <!-- ici la photo de l'article selectionne -->
                 </div>
-                <div class="prix">
-                    Prix :<span></span>
+                <div id="prix">
+                    Prix : <span id="euros"></span>
                 </div>
             </div>
         </div>

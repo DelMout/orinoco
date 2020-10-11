@@ -1,14 +1,6 @@
 // JavaScript source code
 
-// n :n° ordre du produit (name)
-// c : n° ordre de la couleur du produit
-// nTot :nombre de produits pour un article (name)
-// cTot : nombre de couleurs pour un produit
-
-//Calcul de nTot
-
-
-//FONCTION name() : Va chercher le name des produits
+//FONCTION name() : Va chercher le name des produits - i etant le numero dordre du produit
 const name = (i) => {
     fetch("http://localhost:3000/api/teddies")
         .then((resp) => {
@@ -84,20 +76,6 @@ const color = (i) => {
         .then((colors) => {
             let nbColors = colors.length;
             console.log(nbColors); //donne NOMBRE de couleurs du produit
-
-            //let parentOpt = document.getElementById("choix-couleur");
-            //let Opt = parentOpt.children;
-            //console.log("Opt = " + Opt);
-            //let nbOpt = Opt.length; // Nbre lignes OPTION couleur
-            //console.log("Nbre lignes a supprimer = "+nbOpt);
-            //if (nbOpt > 0) {    // Si lignes OPTION présentes
-            //    for (let a = 0; a < nbOpt; a++) {
-            //        parentOpt.removeChild(Opt[a]);  // Supprimer les lignes OPTION
-            //    }
-            //} else {
-
-                  
-           /* for (let a = 0; a < nbColors; a++) {   */     //Ecrit les couleurs dans chaque ligne OPTION
             let parentOpt = document.getElementById("choix-couleur");
             let opt = parentOpt.children;
             console.log("Opt = " + opt);
@@ -121,62 +99,68 @@ const color = (i) => {
                 }
             }
 
-            for (let n = 1; n <= nbColors; n++) {
+            for (let n = 1; n <= nbColors; n++) {       // Ecrit chacune des couleurs dans les lignes OPTION
                 opt.item(n).innerHTML = colors[n-1];
             }
-
-                //let newOpt = document.createElement("option");  
-                //let parentOpt = document.getElementById("choix-couleur");
-                ////if (i = 0) {        // Crée une ligne -option- pour demander de selectionner une couleur
-                ////    parentOpt.appendChild(newOpt);
-                ////    newOpt.innerHTML = "S&eacute;lectionnez une couleur";
-                ////} else {
-                //let color = colors[a];      // UNE couleur du -tableau- couleurs
-                //console.log(color);
-                //parentOpt.appendChild(newOpt);      // Création ligne OPTION dans SELECT choix-couleur
-                //newOpt.innerHTML = color;    //ecrit la couleur
-                //}
-            //}
-            //}
         })
+}
+
+// FONCTION affiche AFFICHE le prix, la description, la photo du produit sélectionné - x étant le numéro dordre du nom et y celui de la couleur
+const affiche = (x,y) => {
+    fetch("http://localhost:3000/api/teddies")
+        .then((resp) => {
+            return resp.json();
+        })
+        .then((all) => {
+            //console.log("ca marche");
+            /* console.log(all);*/ // donne -tableau- avec toutes les données de l'API = TOUS les éléments de TOUS les produits
+            return all;
+        })
+        .then((tabl) => {
+            let obj = tabl[x-1];
+            console.log(obj);  // donne -objet- TOUS les éléments d'UN produit
+            return obj;
+        })
+        .then((elem) => {
+            let prix = elem.price;
+            let photo = elem.imageURL;
+            let description = elem.description;
+            console.log("Prix = " + prix);    //donne -tableau- avec LES couleurs du produit
+            let affPrix = document.getElementById("euros");
+           
+            affPrix.innerHTML = prix/100+" \u20ac";     // Affiche le prix du produit selectionne
+            
+            //return colors;
+        })
+        
 }
 
 
 
 
-
 // Actions avec souris-----
-let selectionne = document.getElementById('choix-article');
-
-//selectionne.addEventListener('click', function (event) {    //recharge la page qd clic su menu des noms
-    
-//    console.log("page rechargée");
-//});
-
-selectionne.addEventListener('change', function (event) {   // Action apres selection du nom
+let selectNom = document.getElementById('choix-article');
+selectNom.addEventListener('change', function (event) {   // Action apres selection du nom
     console.log("selection faite");
-    let votreSelection = document.getElementById("choix-article").selectedIndex;    //numero ordre de l'article
-    console.log(votreSelection);
-
-    
-
-
-    //let parentOpt = document.getElementById("choix-couleur");
-    //let Opt = parentOpt.children;
-    //console.log("Opt = " + Opt);
-    //let nbOpt = Opt.length; // Nbre lignes OPTION couleur
-    //console.log("Nbre lignes a supprimer = " + nbOpt);
-    //if (nbOpt > 0) {    // Si lignes OPTION présentes
-    //    for (let b = 0; b < nbOpt; b++) {
-    //        parentOpt.removeChild(Opt[b]);  // Supprimer les lignes OPTION
-    //    }
-    //}
-
-    color(votreSelection); // Appel la fonction color
+    document.getElementById("choix-couleur").selectedIndex = 0; // Forcer le menu COULEUR sur la 1re option
+    let selectionNom = document.getElementById("choix-article").selectedIndex;    //numero ordre de l'article
+    console.log(selectionNom);
+    color(selectionNom); // Appel la fonction COLOR
+});
+let selectColor = document.getElementById('choix-couleur');
+selectColor.addEventListener('change', function (event) {   // Action apres selection de la couleur
+    console.log("selection couleur faite");
+    let selectionColor = document.getElementById("choix-couleur").selectedIndex;    //numero ordre de la couleur
+    console.log("Color : " + selectionColor);
+    let selectionNom = document.getElementById("choix-article").selectedIndex; 
+    console.log("Nom : " + selectionNom);
+    affiche(selectionNom, selectionColor);   // Appel la fonction AFFICHE
 });
 
-
-
+// Quand reload page, afficher -Selectionnez- dans le menu des noms  
+if (document.location.reload = true) {
+    document.getElementById("choix-article").selectedIndex = 0;     // Forcer le menu NOM sur la 1re option
+}
 
 
 
