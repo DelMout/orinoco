@@ -42,52 +42,68 @@
         </div>
     </header>
     <!-- PRODUIT -->
-    <div class="container my-3">
+    <div class="container-fluid my-3">
         <div class="row">
-            <div class="text-center text-primary font-weight-bold m-auto my-5">
+            <div class="text-center text-primary font-weight-bold mx-auto my-3">
                 <h1>
                     Ours en peluche faits main
                 </h1>
             </div>
         </div>
-        <div id="choix" class="row text-left mx-auto my-5">
-            <form>
-                <div class="form-group">
-                    <label for="choix-article">Choisissez votre ours en peluche fait main :</label>
-                    <select name="articles" id="choix-article" class="form-control">
-                        <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
-                        <option value="ch1" class="nom-article"></option>
-                        <option value="ch2" class="nom-article"></option>
-                        <option value="ch3" class="nom-article"></option>
-                        <option value="ch4" class="nom-article"></option>
-                        <option value="ch5" class="nom-article"></option>
-                    </select>
+        <div id="choix" class="row">
+            <div class="col-4 text-left px-5 my-5">
+                <form>
+                    <div class="form-group">
+                        <label for="choix-article">Choisissez votre ours en peluche fait main :</label>
+                        <select name="articles" id="choix-article" class="form-control">
+                            <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
+                            <option value="ch1" class="nom-article"></option>
+                            <option value="ch2" class="nom-article"></option>
+                            <option value="ch3" class="nom-article"></option>
+                            <option value="ch4" class="nom-article"></option>
+                            <option value="ch5" class="nom-article"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
+                        <select name="couleurs" id="choix-couleur" class="form-control">
+                            <option value="sel" disabled selected class="couleur">Sélectionnez une couleur</option>
+                            <option value="ch1" class="couleur"></option>
+                            <option value="ch2" class="couleur"></option>
+                            <option value="ch3" class="couleur"></option>
+                            <option value="ch4" class="couleur"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="choix-quantite">Choisissez le nombre de produits :</label>
+                        <select name="quantite" id="choix-quantite" class="form-control">
+                            <!--Menu deroulant cree en js   - de 1 a 20-  -->
+                        </select>
+                    </div>
+                </form>
+                <div id="description" class="my-5">
+                    <!--Affiche la description-->
                 </div>
-                <div class="form-group">
-                    <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
-                    <select name="couleurs" id="choix-couleur" class="form-control">
-                        <option value="sel" disabled selected class="couleur">Sélectionnez une couleur</option>
-                        <option value="ch1" class="couleur"></option>
-                        <option value="ch2" class="couleur"></option>
-                        <option value="ch3" class="couleur"></option>
-                        <option value="ch4" class="couleur"></option>
-                    </select>
+                <div id="prix" class="my-5">
+                    Prix : <span id="euros"></span>     <!--Affiche le prix-->
                 </div>
-            </form>
-        </div>
-        <div class="row" id="selection">
-
-        </div>
-
-
-        <div class="row">
-                <div class="photo">
-                    <!-- ici la photo de l'article selectionne -->
-                </div>
-                <div id="prix">
-                    Prix : <span id="euros"></span>
+                <div id="bouton-panier" class="text-right">
+                    <button type="button" class="bg-success btn-lg text-light shadow-lg">Panier</button>   <!--Bouton mis au panier-->
                 </div>
             </div>
+            <div class="col-8">
+                <div id="photo" class="text-center">
+                    <!-- ici la photo de l'article selectionne -->
+                </div>
+            </div>
+        </div>
+        <div class="row" id="description">
+
+        </div>
+        <div class="row">
+                
+                
+        </div>
         </div>
 
 
