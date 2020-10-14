@@ -8,9 +8,27 @@ for (let q = 1; q <= 20; q++) {
     optQuantite.innerHTML = q;
 }
 
-
-
-
+// Affiche la liste des noms des teddies
+fetch("http://localhost:3000/api/teddies")
+    .then((resp) => {
+        return resp.json();
+    })
+    .then((all) => {
+        console.log("ca marche");
+        let nTot = all.length;
+        console.log(nTot); // donne nombre total d'éléments dans le tableau
+        return nTot;
+    })
+    .then((a) => {
+        for (let i = 0; i < a; i++) {
+            name(i);            // appel la fonction name
+            console.log("c sure ca marche");
+        }
+    })
+    .catch((err) => {
+        console.log("y a un probleme");
+        console.log(err)
+    })
 
 
 //FONCTION name() : Va chercher le name des produits - i etant le numero dordre du produit
@@ -38,30 +56,11 @@ const name = (i) => {
             const contents = document.getElementsByClassName("nom-article");    //va chercher les lignes HTML pour ecrire les choix de noms
             let content = contents[i];
             content.innerHTML = nom;    //ecrit le nom
+            content.value = nom;        // ecrit le nom dans value
         })
 }
 
-// Affiche la liste des noms des teddies
-fetch("http://localhost:3000/api/teddies")
-    .then((resp) => {
-        return resp.json();
-    })
-    .then((all) => {
-        console.log("ca marche");
-        let nTot = all.length;
-        console.log(nTot); // donne nombre total d'éléments dans le tableau
-        return nTot;
-    })
-    .then((a) => {
-        for (let i = 0; i < a; i++) {
-            name(i);            // appel la fonction name
-            console.log("c sure ca marche");
-        }
-    })
-    .catch((err) => {
-        console.log("y a un probleme");
-        console.log(err)
-    })
+
 
 // FONCTION color va chercher les couleurs d'un ours - i etant le numero dordre des ours
 const color = (i) => {
@@ -81,12 +80,10 @@ const color = (i) => {
         })
         .then((elem) => {
             let nom = elem.name;  // Donne nom du produit
-            localStorage.setItem("nom", nom); // Stocke nom
+            //localStorage.setItem("nom", nom); // Stocke nom
             let id = elem._id;  // Donne id du produit
-            localStorage.setItem("id", id); // Stocke Id
-            let colors = elem.colors;
-            console.log(colors);    //donne -tableau- avec LES couleurs du produit
-            localStorage.setItem("objetColors", colors);    // stocke -objet- couleurs du produit
+            //localStorage.setItem("id", id); // Stocke Id
+            let colors = elem.colors;   //donne -tableau- avec LES couleurs du produit
             return colors;
         })
         .then((colors) => {
@@ -116,7 +113,8 @@ const color = (i) => {
             }
 
             for (let n = 1; n <= nbColors; n++) {       // Ecrit chacune des couleurs dans les lignes OPTION
-                opt.item(n).innerHTML = colors[n-1];
+                opt.item(n).innerHTML = colors[n - 1];
+                opt.item(n).value = colors[n - 1];
             }
         })
 }
@@ -142,9 +140,12 @@ const affiche = (x,y) => {
             let photo = elem.imageUrl;      // Photo du produit
             let description = elem.description;     // Description du produit
             let id = elem._id;      // Id du produit
+            console.log("id = " + id);
+            localStorage.setItem("id", id); // Id mis temporairement dans localStorage
             let affPrix = document.getElementById("euros");
             affPrix.innerHTML = prix * y / 100 + " \u20ac";     // Affiche le prix du produit selectionne
             localStorage.setItem("prixTotal", prix * y / 100);     // Stocke prix total
+            console.log("y :" + y);
             let affDescription = document.getElementById("description");
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
             let affPhoto = document.getElementById("photo");
@@ -152,7 +153,7 @@ const affiche = (x,y) => {
             
            
             
-            //return colors;
+            //return id;
         })
         
 }
@@ -161,45 +162,93 @@ const affiche = (x,y) => {
 
 
 // Actions avec souris-----
-let selectNom = document.getElementById('choix-article');
-selectNom.addEventListener('change', function (event) {   // Action apres selection du nom
-    localStorage.clear();       // Mise à 0 du local storage
+const choixCouleur = document.getElementById("choix-couleur");
+const choixValide = document.getElementById("valide");
+const selectNom = document.getElementById('choix-nom');
+selectNom.addEventListener('change', function (event) {   // Action apres selection du NOM
     console.log("selection faite");
     document.getElementById("choix-couleur").selectedIndex = 0; // Forcer le menu COULEUR sur la 1re option
     document.getElementById("choix-quantite").selectedIndex = 0; // Forcer le menu QUANTITE sur la 1re option
-    let selectionNom = document.getElementById("choix-article").selectedIndex;    //numero ordre de l'article
+    let selectionNom = document.getElementById("choix-nom").selectedIndex;    //numero ordre de l'article
     localStorage.setItem("indexNom", selectionNom);   // stocke numero ordre du nom
     console.log(selectionNom);
     color(selectionNom); // Appel la fonction COLOR
-    affiche(selectionNom,1);   // Appel la fonction AFFICHE
+    affiche(selectionNom, 1);   // Appel la fonction AFFICHE
+    
+    const selectionQuantite = document.getElementById("choix-quantite").selectedIndex + 1;    //numero ordre de la QUANTITE
+    localStorage.setItem("quantite", "1");     // Stockage de la quantite par défaut à 1
+    
 });
 let selectColor = document.getElementById('choix-couleur');
-selectColor.addEventListener('change', function (event) {   // Action apres selection de la couleur
-    console.log("selection couleur faite");
-    // A REVOIR pour mettre dans localStorage la couleur choisie -----------------
-    //let selectionColor = document.getElementById("choix-couleur").selectedIndex;    //numero ordre de la couleur
-    //let color = document.getElementById("choix-couleur").selectedValue; 
-    //console.log("Ta couleur : "+color);
-    //localStorage.setItem("indexCouleur", selectionColor);   // stocke numero ordre de la couleur
-    console.log(localStorage);
+selectColor.addEventListener('change', function (event) {   // Action apres selection de la COULEUR
+    let color = document.getElementById("choix-couleur").value; 
+    //localStorage.setItem("couleur", color);   // stocke la COULEUR
+    choixCouleur.classList.remove("border-danger");
+    choixValide.innerHTML = "";     // Supprimer message info si il y avait au préalable
 });
 let selectQuantite = document.getElementById('choix-quantite');
 selectQuantite.addEventListener('change', function (event) {   // Action apres selection de la QUANTITE
-    console.log("selection quantite faite");
-    let selectionQuantite = document.getElementById("choix-quantite").selectedIndex + 1;    //numero ordre de la QUANTITE
+    const selectionQuantite = document.getElementById("choix-quantite").selectedIndex + 1;    //numero ordre de la QUANTITE
     localStorage.setItem("quantite", selectionQuantite);     // Stockage de la quantite
     affiche(localStorage.getItem("indexNom"), selectionQuantite);   // Appel la fonction AFFICHE
 });
 let selectPanier = document.getElementById('bouton-panier');
 selectPanier.addEventListener('click', function (event) {   // Action apres clic sur BOUTON PANIER
     console.log("Validation PANIER");
-    console.log(localStorage);
+    // Si pas de couleur sélectionnée alors message en rouge pour que l'user sélectionne une couleur (ET encadré rouge de la partie couleur)
+    if (choixCouleur.value == "sel") {
+        choixValide.innerHTML = "Vous n'avez pas s\u00e9lectionn\u00e9 de couleur.<br/>Faites un choix.";
+        choixValide.classList.add("text-danger");
+        choixCouleur.classList.add("border-danger");
+
+    } else {
+        choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton";
+        choixValide.classList.replace("text-danger", "text-success");
+        choixValide.classList.add("text-success");
+        let btnPanier = document.getElementById("bouton-panier");
+        btnPanier.classList.add("d-none");          // Cacher le bouton PANIER
+        let btnAjout = document.getElementById("bouton-ajout");
+        btnAjout.classList.remove("d-none");        // Afficher le bouton AJOUT
+        // Sauvegarde des données dans localStorage
+        console.log("length : " + localStorage.length);
+        if (localStorage.length <5) {   // Seulement le id et qté de renseignés
+            localStorage.setItem("nbreLignes", 1);
+        } else {
+            let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
+            localStorage.setItem("nbreLignes", n); // Nbre de lignes de commandes mis dans le panier
+            console.log("n = " + n);
+        };
+        let n = localStorage.getItem("nbreLignes");
+        let nom = "_" + n + "Nom";
+        localStorage.setItem(nom, selectNom.value); // Ajout du NOM dans localStorage
+        let id = "_" + n + "Id";
+        localStorage.setItem(id, localStorage.getItem("id")); // Ajout de ID dans localStorage
+        let qte = "_" + n + "Quantite";
+        localStorage.setItem(qte, localStorage.getItem("quantite")); // Ajout de QUANTITE dans localStorage
+        let prix = "_" + n + "PrixTotal";
+        localStorage.setItem(prix, localStorage.getItem("prixTotal")); // Ajout de PRIX TOTAL dans localStorage
+        let couleur = "_" + n + "Couleur";
+        localStorage.setItem(couleur, choixCouleur.value); // Ajout de la COULEUR dans localStorage
+        
+
+    }
     
 });
+let selectAjout = document.getElementById('bouton-ajout');
+selectAjout.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT
+    document.location.reload(true); // Recharge la page
+    // Incrément dans localStorage de nbreArticles
+});
+const selectReset = document.getElementById('bouton-reset');
+selectReset.addEventListener('click', function (event) {   // Action apres clic sur BOUTON RESET
+    localStorage.clear();
+});
+
+
 
 // Quand reload page, afficher -Selectionnez- dans le menu des noms  
 if (document.location.reload = true) {
-    document.getElementById("choix-article").selectedIndex = 0;     // Forcer le menu NOM sur la 1re option
+    document.getElementById("choix-nom").selectedIndex = 0;     // Forcer le menu NOM sur la 1re option
 }
 
 
