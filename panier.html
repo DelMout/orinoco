@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="Orinoco personnalise pour vous votre ours en peluche fait main.">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Orinoco : Ours en peluche faits main</title>
+    <title>Orinoco : Votre panier</title>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -47,51 +47,26 @@
         <div class="row">
             <div class="text-center text-primary font-weight-bold mx-auto my-3">
                 <h1>
-                    Ours en peluche faits main
+                    Contenu de votre panier :
                 </h1>
-                <button type="button" id="bouton-reset" class="bg-danger btn-lg text-light shadow-lg">LocalStorage à 0</button>
+                <p id="info" class="text-danger"></p>
+                
             </div>
         </div>
-        <div id="choix" class="row">
-            <div class="col-4 text-left px-5 my-5">
-                <form>
-                    <div class="form-group">
-                        <label for="choix-articles">Choisissez l'article souhaité :</label>
-                        <select name="art" id="choix-articles" class="form-control">
-                            <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
-                            <option value="ch1" class="article">Ours en peluche fait main</option>
-                            <option value="ch2" class="article">Appareil-photo vintage</option>
-                            <option value="ch3" class="article">Meubles en chêne</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="choix-nom">Choisissez votre ours en peluche fait main :</label>
-                        <select name="articles" id="choix-nom" class="form-control">
-                            <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
-                            <option value="ch1" class="nom-article"></option>
-                            <option value="ch2" class="nom-article"></option>
-                            <option value="ch3" class="nom-article"></option>
-                            <option value="ch4" class="nom-article"></option>
-                            <option value="ch5" class="nom-article"></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="choix-couleur">Choisissez la couleur de votre ours en peluche fait main :</label>
-                        <select name="couleurs" id="choix-couleur" class="form-control">
-                            <option value="sel" disabled selected class="couleur">Sélectionnez une couleur</option>
-                            <option value="ch1" class="couleur"></option>
-                            <option value="ch2" class="couleur"></option>
-                            <option value="ch3" class="couleur"></option>
-                            <option value="ch4" class="couleur"></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="choix-quantite">Choisissez le nombre de produits :</label>
-                        <select name="quantite" id="choix-quantite" class="form-control">
-                            <!--Menu deroulant cree en js   - de 1 a 20-  -->
-                        </select>
-                    </div>
-                </form>
+        <div class="row">
+            <table id="tableau" class="table col-9 mx-auto">
+                <tr>
+                    <th>Article</th>
+                    <th>Option</th>
+                    <th>Identifiant</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Prix total</th>
+                </tr>
+            </table>
+        </div>   
+            <div class="col text-left px-5 my-5">
+                
                 <div id="description" class="my-5">
                     <!--Affiche la description-->
                 </div>
@@ -99,12 +74,12 @@
                     <p class="col-3 bg-secondary text-light text-left p-2 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
                 </div>
                 <div class="row">
-                    <div class="col-9 font-weight-bold">
+                    <div class="col font-weight-bold">
                         <p id="valide"></p> <!--Affiche un commentaire soit oubli sélection couleur ou faire un ajout-->
                     </div>
                     <div  class="col text-right">
-                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg">Panier</button>   <!--Bouton mis au panier-->
-                        <button type="button" id="bouton-ajout" class="bg-info d-none btn-lg text-light shadow-lg">+</button>   <!--Bouton ajout autres produits-->
+                        <button type="button" id="bouton-commande" class="bg-success btn-lg text-light shadow-lg">Commander</button>   <!--Bouton mis au panier-->
+                        
                     </div>
                 </div>
             </div>
@@ -113,7 +88,7 @@
                     <!-- ici la photo de l'article selectionne -->
                 </div>
             </div>
-        </div>
+       
         <div class="row" id="description">
 
         </div>
@@ -148,9 +123,8 @@
         <!-- Liens vers bibliothèques -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <!-- Liens vers API ours -->
-
-        <script type="text/javascript" src="ours.js"></script>
+        <!-- Liens vers fichier JS -->
+        <script type="text/javascript" src="panier.js"></script>
 
 </body>
 </html>

@@ -137,6 +137,7 @@ const affiche = (x,y) => {
         })
         .then((elem) => {
             let prix = elem.price;      //Prix du produit
+            localStorage.setItem("prix", prix/100); // Prix unitaire mis temporairement dans localStorage
             let photo = elem.imageUrl;      // Photo du produit
             let description = elem.description;     // Description du produit
             let id = elem._id;      // Id du produit
@@ -211,7 +212,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         btnAjout.classList.remove("d-none");        // Afficher le bouton AJOUT
         // Sauvegarde des données dans localStorage
         console.log("length : " + localStorage.length);
-        if (localStorage.length <5) {   // Seulement le id et qté de renseignés
+        if (localStorage.length <6) {   // Seulement le id et qté de renseignés
             localStorage.setItem("nbreLignes", 1);
         } else {
             let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
@@ -225,8 +226,10 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         localStorage.setItem(id, localStorage.getItem("id")); // Ajout de ID dans localStorage
         let qte = "_" + n + "Quantite";
         localStorage.setItem(qte, localStorage.getItem("quantite")); // Ajout de QUANTITE dans localStorage
-        let prix = "_" + n + "PrixTotal";
-        localStorage.setItem(prix, localStorage.getItem("prixTotal")); // Ajout de PRIX TOTAL dans localStorage
+        let prix = "_" + n + "PrixUni";
+        localStorage.setItem(prix, localStorage.getItem("prix")); // Ajout de PRIX TOTAL dans localStorage
+        let prixTot = "_" + n + "PrixTotal";
+        localStorage.setItem(prixTot, localStorage.getItem("prixTotal")); // Ajout de PRIX TOTAL dans localStorage
         let couleur = "_" + n + "Couleur";
         localStorage.setItem(couleur, choixCouleur.value); // Ajout de la COULEUR dans localStorage
         
