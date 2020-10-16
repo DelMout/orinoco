@@ -1,9 +1,14 @@
 // JavaScript source code
 
+// Affiche nbre de produits en entete
+const nbProd = document.getElementById("nbreProd");
+nbProd.innerHTML = localStorage.getItem("qteTotal");
+
+
 
 const cle = ['Nom', 'Couleur', 'Id', 'Quantite', 'PrixUni', 'PrixTotal'];     // Tableaux des clés du localStorage
 
-if (localStorage.length < 5) {
+if (localStorage.length < 7) {
     //Votre panier est vide
     let info = document.getElementById("info");
     info.innerHTML = "Votre panier est vide";
@@ -12,11 +17,15 @@ if (localStorage.length < 5) {
     let parent = document.getElementById("tableau");
     let nbLignes = localStorage.getItem("nbreLignes");
     let total = 0;  // Total des prix totaux
+    let qteTotal = 0; // Total des quantités
     for (let n = 1; n <= nbLignes; n++) {
         const newTr = document.createElement("tr");
         parent.appendChild(newTr);
         const nCle5 = "_" + n + cle[5]; // Clé pour le prix total
         total = parseInt(localStorage.getItem(nCle5)) + total;
+        //const nCle3 = "_" + n + cle[3]; // Clé pour la quantité
+        //qteTotal = parseInt(localStorage.getItem(nCle3)) + qteTotal;
+        //localStorage.setItem("qteTotal", qteTotal); // Quantité total des produits stockée dans localStorage
         for (let c = 0; c <= 5; c++) {
             const newTd = document.createElement("td");
             newTr.appendChild(newTd);
@@ -37,14 +46,10 @@ if (localStorage.length < 5) {
     newTd1.classList.add("text-right");
     newTd1.setAttribute("colspan", "5");
     newTd1.innerHTML = "TOTAL :";
-
     const newTd2 = document.createElement("td");
     newTfoot.appendChild(newTd2);
     newTd2.innerHTML = total + " \u20ac";
-   
-    
 }
-
 
 for (let n = 1; n <= nbColors; n++) {       // Ecrit chacune des couleurs dans les lignes OPTION
     ligne.item(n).innerHTML = colors[n - 1];

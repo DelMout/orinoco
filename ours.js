@@ -1,5 +1,12 @@
 // JavaScript source code
 
+// Affiche nbre de produits en entete
+const nbProd = document.getElementById("nbreProd");
+nbProd.innerHTML = localStorage.getItem("qteTotal");
+
+
+
+
 // Création contenu MENU DEROULANT -quantite- de 1 à 20
 for (let q = 1; q <= 20; q++) {
     let menuQuantite = document.getElementById("choix-quantite");
@@ -201,7 +208,6 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         choixValide.innerHTML = "Vous n'avez pas s\u00e9lectionn\u00e9 de couleur.<br/>Faites un choix.";
         choixValide.classList.add("text-danger");
         choixCouleur.classList.add("border-danger");
-
     } else {
         choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton";
         choixValide.classList.replace("text-danger", "text-success");
@@ -212,8 +218,9 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         btnAjout.classList.remove("d-none");        // Afficher le bouton AJOUT
         // Sauvegarde des données dans localStorage
         console.log("length : " + localStorage.length);
-        if (localStorage.length <6) {   // Seulement le id et qté de renseignés
+        if (localStorage.length <7) {   // Seulement le id et qté de renseignés
             localStorage.setItem("nbreLignes", 1);
+            
         } else {
             let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
             localStorage.setItem("nbreLignes", n); // Nbre de lignes de commandes mis dans le panier
@@ -226,6 +233,9 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         localStorage.setItem(id, localStorage.getItem("id")); // Ajout de ID dans localStorage
         let qte = "_" + n + "Quantite";
         localStorage.setItem(qte, localStorage.getItem("quantite")); // Ajout de QUANTITE dans localStorage
+        let qteTotal = parseInt(localStorage.getItem("qteTotal")) + parseInt(localStorage.getItem("quantite"));      // Calcul cumul des quantités de produits
+        localStorage.setItem("qteTotal", qteTotal); // Ajout de QUANTITE TOTALE dans localStorage
+        nbProd.innerHTML = localStorage.getItem("qteTotal");    // Affichage en entete de QUANTITE TOTAL de produits
         let prix = "_" + n + "PrixUni";
         localStorage.setItem(prix, localStorage.getItem("prix")); // Ajout de PRIX TOTAL dans localStorage
         let prixTot = "_" + n + "PrixTotal";
@@ -245,6 +255,7 @@ selectAjout.addEventListener('click', function (event) {   // Action apres clic 
 const selectReset = document.getElementById('bouton-reset');
 selectReset.addEventListener('click', function (event) {   // Action apres clic sur BOUTON RESET
     localStorage.clear();
+    localStorage.setItem("qteTotal", 0);    // Mise à 0 de la QUANTITE TOTALE produits
 });
 
 
