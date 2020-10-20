@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="Orinoco personnalise pour vous votre ours en peluche fait main.">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Orinoco : Votre panier</title>
+    <title>Orinoco : Votre commande</title>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="text-center text-primary font-weight-bold mx-auto my-3">
                 <h1>
-                    Contenu de votre panier :
+                    Orinoco vous remercie pour votre commande.
                 </h1>
                 <p id="info" class="text-danger"></p>
                 
@@ -67,72 +67,13 @@
                     <th>Prix total</th>
                 </tr>
             </table>
-        </div> 
-        <!--Formulaire sur le contact-->
-        <div class="row ">
-            <h2 class="mx-auto py-4 text-dark bg-warning col-9 text-center font-weight-bold">Merci de remplir ce formulaire</h2>
         </div>
-        <div class="row">
-            <form id="formu" class="bg-warning col-9 mx-auto mt-n2 was-validated">
-                <div class="form-group col-12 mx-auto">
-                    <div class="row mx-auto">
-                        <div class="col-7">
-                            <label for="nom">* Votre nom :</label>
-                            <input type="text" id="nom" class="form-control" required>
-                        </div>
-                        <div class="col">
-                            <label for="prenom">* Votre prénom :</label>
-                            <input type="text" id="prenom" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row mx-auto mt-3">
-                        <div class="col">
-                            <label for="adresse">* Votre adresse postale :</label>
-                            <input type="text" id="adresse" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row mx-auto mt-3">
-                        <div class="col-3 ">
-                            <label for="code">* Votre code postal :</label>
-                            <input type="number" id="code" class="form-control" minlength="5" maxlength="5" min="01000" max="99999" required>
-                        </div>
-                        <div class="col-9">
-                            <label for="ville">* Votre ville :</label>
-                            <input type="text" id="ville" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row mx-auto mt-3 mb-5">
-                        <div class="col">
-                            <label for="email">* Votre adresse électronique :</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row mx-auto mt-2 mb-3 pl-3 ">
-                        <div class="col">
-                            <input type="checkbox" id="radio" class="form-check-input" name="rgpd" required>
-                            <label class="form-check-label" for="rgpd">
-                                En cochant cette case et en soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées
-                                pour me recontacter dans le cadre de ma demande indiquée dans ce formulaire. Aucun autre traitement ne sera
-                                effectué avec mes informations.
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row mx-auto mt-4 mb-3 pl-3 font-italic">
-                        <p>* : Renseignements obligatoires.</p>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row my-5 text-center">
-            <div class="col-9 mx-auto">
-                <div class="row">
-                    <div class="col px-0 my-auto text-left text-danger font-weight-bold" id="alerte">
-                        <!--message alerte si formulaire mal renseigné.-->
-                    </div>
-                    <div class="col text-right px-0">
-                        <button type="button" id="bouton-commande" class="bg-success btn-lg text-light shadow-lg">Validez<br />la commande</button>   <!--Bouton COMMANDE-->
-                    </div>
-                </div>
+        
+
+        <div class="row text-success">
+            <div class="col-9 mx-auto font-weight-bold">
+                <span id="votrePrenom"></span> <span id="votreNom"></span>,<br/>
+                Le résumé de votre commande n°<span id="order_id" class="text-info"></span>  vous a été envoyé à l'adresse <span id="eMail" class="text-info"></span>.
             </div>
         </div>
     </div>        
@@ -163,7 +104,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <!-- Liens vers fichier JS -->
-        <script type="text/javascript" src="panier.js"></script>
+        <script type="text/javascript" src="commande.js"></script>
 
 </body>
 </html>
