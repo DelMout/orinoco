@@ -11,31 +11,32 @@
 <body>
     <!--ENTETE-->
     <header>
-        <div class="container-fluid bg-info p-2">
+        <div class="container-fluid py-0 px-5 jumbotron">
             <div class="row">
                 <div class="col">
-                    <nav class="col navbar navbar-expand-md navbar-dark">
-                        <a class="navbar-brand" href="index.html">
+                    <nav class="row navbar navbar-expand-md navbar-dark">
+                        <a class="col-9 navbar-brand" href="index.html">
                             <img src="images/logo.png" width="140" height="80" alt="Logo Orinoco" />
                         </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div id="navbarContent" class="collapse navbar-collapse">
+                        <div id="navbarContent" class="col collapse navbar-collapse">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Accueil</a>
+                                <li class="nav-item  ">
+                                    <a id="accueil" class="nav-link text-dark font-weight-bold mx-5" href="index.html">Accueil</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="panier.html">
-                                        <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-basket3-fill text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <li class="nav-item active">
+                                    <a class="nav-link " href="panier.html">
+                                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-basket3-fill text-dark ml-2 pl-n2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z" />
                                             <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
                                         </svg>
-                                        <div id="nbreProd" class="bg-warning text-center font-weight-bold text-dark rounded-circle">
-                                            <!-- Affiche le nombre de produits dans le panier-->
+                                        <div id="nbreProd" class=" bg-warning text-center font-weight-bold text-dark rounded-circle mx-4 ">
+                                            <!--Affiche le nombre de produits dans le panier-->
                                         </div>
+
                                     </a>
                                 </li>
                             </ul>
@@ -130,41 +131,36 @@
                 </div>
             </form>
         </div>
-        <div class="row my-5 text-center">
-            <div class="col-9 mx-auto">
+        <div class="row my-2 text-center">
+            <div class="col-9 mx-auto ">
                 <div class="row">
-                    <div class="col px-0 my-auto text-left text-danger font-weight-bold" id="alerte">
+                    <div class="col px-0 mt-3 text-left text-danger font-weight-bold" id="alerte">
                         <!--message alerte si formulaire mal renseigné.-->
                     </div>
-                    <div class="col text-right px-0">
-                        <button type="button" id="bouton-commande" class="formulaire bg-success btn-lg text-light shadow-lg">Validez<br />la commande</button>   <!--Bouton COMMANDE-->
+                    <div class="col text-right px-0 mb-3">
+                        <button type="button" id="bouton-commande" class="formulaire bg-success btn-lg text-light shadow-lg mb-5">Validez<br />la commande</button>   <!--Bouton COMMANDE-->
                     </div>
                 </div>
             </div>
         </div>
     </div>        
-
-
-
         <!-- PIED DE PAGE -->
-        <footer>
-            <div class="container-fluid bg-info p-4">
-                <div class="row">
-                    <div class="col">
-                        <nav class="col navbar navbar-expand navbar-light">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Mentions légales</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contactez-nous</a>
-                                </li>
-                            </ul>
-                        </nav>
+    <footer class="jumbotron my-0 py-3">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-4 mx-auto">
+                    <div class="row">
+                        <div class="col-6">
+                            <a class="text-dark" href="#">Mentions légales</a>
+                        </div>
+                        <div class="col-6">
+                            <a class="text-dark" href="#">Contactez-nous</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
         <!-- Liens vers bibliothèques -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

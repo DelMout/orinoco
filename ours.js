@@ -154,6 +154,7 @@ const affiche = (x,y) => {
             localStorage.setItem("prix", prix/100); // Prix unitaire mis temporairement dans localStorage
             let photo = elem.imageUrl;      // Photo du produit
             let description = elem.description;     // Description du produit
+            let nom = elem.name;        // Nom de l'ourson
             let id = elem._id;      // Id du produit
             console.log("id = " + id);
             localStorage.setItem("id", id); // Id mis temporairement dans localStorage
@@ -165,6 +166,8 @@ const affiche = (x,y) => {
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
             let affPhoto = document.getElementById("photo");
             affPhoto.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' />";     // Affiche la photo du produit selectionne
+            let nomH2 = document.getElementById("nom-titre");
+            nomH2.innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
         })
         
 }
@@ -189,8 +192,6 @@ selectNom.addEventListener('change', function (event) {   // Action apres select
 });
 let selectColor = document.getElementById('choix-couleur');
 selectColor.addEventListener('change', function (event) {   // Action apres selection de la COULEUR
-    let color = document.getElementById("choix-couleur").value; 
-    //localStorage.setItem("couleur", color);   // stocke la COULEUR
     choixCouleur.classList.remove("border-danger");
     choixValide.innerHTML = "";     // Supprimer message info si il y avait au préalable
 });
@@ -209,7 +210,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         choixValide.classList.add("text-danger");
         choixCouleur.classList.add("border-danger");
     } else {
-        choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton";
+        choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton.";
         choixValide.classList.replace("text-danger", "text-success");
         choixValide.classList.add("text-success");
         let btnPanier = document.getElementById("bouton-panier");
@@ -250,11 +251,11 @@ selectAjout.addEventListener('click', function (event) {   // Action apres clic 
     document.location.reload(true); // Recharge la page
     // Incrément dans localStorage de nbreArticles
 });
-const selectReset = document.getElementById('bouton-reset');
-selectReset.addEventListener('click', function (event) {   // Action apres clic sur BOUTON RESET
-    localStorage.clear();
-    localStorage.setItem("qteTotal", 0);    // Mise à 0 de la QUANTITE TOTALE produits
-});
+//const selectReset = document.getElementById('bouton-reset');
+//selectReset.addEventListener('click', function (event) {   // Action apres clic sur BOUTON RESET
+//    localStorage.clear();
+//    localStorage.setItem("qteTotal", 0);    // Mise à 0 de la QUANTITE TOTALE produits
+//});
 
 
 // Quand reload page, afficher -Selectionnez- dans le menu des noms  
