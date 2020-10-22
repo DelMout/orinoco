@@ -17,9 +17,6 @@ if (unNom == null) {
 const nbProd = document.getElementById("nbreProd");
 nbProd.innerHTML = localStorage.getItem("qteTotal");
 
-
-
-
 // Création contenu MENU DEROULANT -quantite- de 1 à 20
 for (let q = 1; q <= 20; q++) {
     let menuQuantite = document.getElementById("choix-quantite");
@@ -41,12 +38,11 @@ fetch("http://localhost:3000/api/teddies")
     })
     .then((a) => {
         for (let i = 0; i < a; i++) {
-            name(i);            // appel la fonction name
-            console.log("c sure ca marche");
+        name(i);            // appel la fonction name
+        console.log("c sure ca marche");
         }
     })
     .catch((err) => {
-        console.log("y a un probleme");
         console.log(err)
     })
 
@@ -79,8 +75,6 @@ const name = (i) => {
             content.value = nom;        // ecrit le nom dans value
         })
 }
-
-
 
 // FONCTION color va chercher les couleurs d'un ours - i etant le numero dordre des ours
 const color = (i) => {
@@ -171,16 +165,9 @@ const affiche = (x,y) => {
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
             let affPhoto = document.getElementById("photo");
             affPhoto.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' />";     // Affiche la photo du produit selectionne
-            
-           
-            
-            //return id;
         })
         
 }
-
-
-
 
 // Actions avec souris-----
 const choixCouleur = document.getElementById("choix-couleur");
@@ -255,8 +242,6 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         localStorage.setItem(prixTot, localStorage.getItem("prixTotal")); // Ajout de PRIX TOTAL dans localStorage
         let couleur = "_" + n + "Couleur";
         localStorage.setItem(couleur, choixCouleur.value); // Ajout de la COULEUR dans localStorage
-        
-
     }
     
 });
@@ -272,54 +257,15 @@ selectReset.addEventListener('click', function (event) {   // Action apres clic 
 });
 
 
-
 // Quand reload page, afficher -Selectionnez- dans le menu des noms  
 if (document.location.reload = true) {
     document.getElementById("choix-nom").selectedIndex = 0;     // Forcer le menu NOM sur la 1re option
+    // Si sélection sur la page ACCUEIL, alors indexNom renseigné dans localStorage
+    // Positionner le 1er menu déroulant sur cet index
+    if (localStorage.getItem("indexNom") > 0) {
+        document.getElementById("choix-nom").selectedIndex = localStorage.getItem("indexNom");
+        console.log("indexNom>0 : " + localStorage.getItem("indexNom"));
+        color(localStorage.getItem("indexNom"));
+        affiche(localStorage.getItem("indexNom"), 1);
+    }
 }
-
-
-
-//const reqGet = (n,c) => {
-
-//    fetch("http://localhost:3000/api/teddies", {
-    
-//    //method: "GET",
-//    //data: 'data',
-//    //dataType: 'json',
-//    //ContentType: 'application/json'
-
-//    })
-//        .then((resp) => {
-//        return resp.json();
-//        })
-//        .then((all) => {
-//            console.log("ca marche");
-//            const nbreProduits=all.length;
-//            console.log(all); // donne -tableau- avec toutes les données de l'API = TOUS les éléments de TOUS les produits
-//            console.log(nbreProduits);
-//            return all;
-//        })
-//        .then((tabl) => {
-//            let obj = tabl[0];
-//            console.log(obj);  // donne -objet- TOUS les éléments d'UN produit
-//            return obj;
-//        })
-//        .then((elem) => {
-//            let color = elem.colors;
-//            console.log(color); // donne UN élement -color en tableau- d'UN produit
-//            let id = elem._id;
-//            console.log(id);    // donne UN élement -id- d'UN produit
-//        })
-//        .catch((err) => {
-//            console.log("y a un probleme");
-//            console.log(err)
-//        })
-//}
-//reqGet();
-
-// Affiche le nom de l'ours slectionne--A REVOIR---
-
-
-//let ligne = document.getElementById("selection");
-//ligne.innerHTML = votreSelection;

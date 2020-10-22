@@ -18,9 +18,6 @@ if (localStorage.length < 7) {
         parent.appendChild(newTr);
         const nCle5 = "_" + n + cle[5]; // Clé pour le prix total
         total = parseInt(localStorage.getItem(nCle5)) + total;
-        //const nCle3 = "_" + n + cle[3]; // Clé pour la quantité
-        //qteTotal = parseInt(localStorage.getItem(nCle3)) + qteTotal;
-        //localStorage.setItem("qteTotal", qteTotal); // Quantité total des produits stockée dans localStorage
         for (let c = 0; c <= 5; c++) {
             const newTd = document.createElement("td");
             newTr.appendChild(newTd);
@@ -46,12 +43,10 @@ if (localStorage.length < 7) {
     newTd2.innerHTML = total + " \u20ac";
 }
 
-// Inclure Prénom, nom et email dans phrase d'envoi mail.
+// Inclure Prénom et nom dans phrase confirmation commande.
 const votrePrenom = document.getElementById("votrePrenom");
 const votreNom = document.getElementById("votreNom");
-const eMail = document.getElementById("eMail");
 const orderId = document.getElementById("order_id");
 votrePrenom.innerHTML = localStorage.getItem("votrePrenom");
 votreNom.innerHTML = localStorage.getItem("votreNom");
 orderId.innerHTML = localStorage.getItem("orderId");
-eMail.innerHTML = localStorage.getItem("eMail");

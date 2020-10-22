@@ -60,15 +60,6 @@
             <div class="col-4 text-left px-5 my-5">
                 <form>
                     <div class="form-group">
-                        <label for="choix-articles">Choisissez l'article souhaité :</label>
-                        <select name="art" id="choix-articles" class="form-control">
-                            <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
-                            <option value="ch1" class="article">Ours en peluche fait main</option>
-                            <option value="ch2" class="article">Appareil-photo vintage</option>
-                            <option value="ch3" class="article">Meubles en chêne</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="choix-nom">Choisissez votre ours en peluche fait main :</label>
                         <select name="articles" id="choix-nom" class="form-control">
                             <option value="sel" disabled selected class="selectionnez">Sélectionnez un article</option>
@@ -103,11 +94,11 @@
                     <p class="col-3 bg-secondary text-light text-left p-2 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
                 </div>
                 <div class="row">
-                    <div class="col-9 font-weight-bold">
+                    <div class="col-8 font-weight-bold">
                         <p id="valide"></p> <!--Affiche un commentaire soit oubli sélection couleur ou faire un ajout-->
                     </div>
                     <div  class="col text-right">
-                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg">Panier</button>   <!--Bouton mis au panier-->
+                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg">Ajouter<br/>au panier</button>   <!--Bouton mis au panier-->
                         <button type="button" id="bouton-ajout" class="bg-info d-none btn-lg text-light shadow-lg">+</button>   <!--Bouton ajout autres produits-->
                     </div>
                 </div>

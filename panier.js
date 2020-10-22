@@ -52,15 +52,19 @@ selectReduc.addEventListener('click', function (event) {   // Action apres clic 
 });
 
 
-
-
-
 // Construction du tableau RESUME du PANIER
 const tableauPanier = () => {
     if (localStorage.length < 8) {
         //Votre panier est vide
         let info = document.getElementById("info");
         info.innerHTML = "Votre panier est vide";
+        let tableau = document.getElementById("tableau");
+        tableau.classList.add("d-none");    // Masquer le TABLEAU de synthèse des produits
+        let formulaire = document.getElementsByClassName("formulaire");
+        formulaire[0].classList.add("d-none"); // Masquer le FORMULAIRE (le titre)
+        formulaire[1].classList.add("d-none"); // Masquer le FORMULAIRE (le corps)
+        formulaire[2].classList.add("d-none"); // Masquer le FORMULAIRE (le bouton commande)
+        
     } else {
         // Ajout de lignes au tableau de synthèse
         let parent = document.getElementById("tableau");
@@ -102,13 +106,6 @@ const tableauPanier = () => {
 }
 
 tableauPanier();
-
-//for (let n = 1; n <= nbColors; n++) {       // Ecrit chacune des couleurs dans les lignes OPTION
-//    ligne.item(n).innerHTML = colors[n - 1];
-//    ligne.item(n).value = colors[n - 1];
-//}
-
-
 
 class Contact {     // Données pour ensuite créer lobjet "contact"
     constructor(firstName, lastName, address, city, email) {
@@ -167,13 +164,8 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
                 console.log("resp = " + order_Id);
                 localStorage.setItem("orderId", order_Id);  // Copie de ORDER_ID dans localStorage
                 document.location.href = "commande.html";      // Bascule sur la page COMMANDE
-                
-                // Envoie un résumé de la commande par mail
             })
     }
 });
 
-    // Si pas de couleur sélectionnée alors message en rouge pour que l'user sélectionne une couleur (ET encadré rouge de la partie couleur)
-    //if (choixCouleur.value == "sel") {
-    //    choixValide.innerHTML = "Vous n'avez pas s\u00e9lectionn\u00e9 de couleur.<br/>Faites un choix.";
-    //    choixValide.classList.add("text-danger");
+  
