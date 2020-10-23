@@ -3,8 +3,9 @@
     "",
     "\\controllers",
     "\\models",
-    "\\routes"
+    "\\routes",
+    "\\scss"
   ],
-  "SelectedNode": "\\index.js",
+  "SelectedNode": "\\scss\\style.scss",
   "PreviewInSolutionExplorer": false
 }

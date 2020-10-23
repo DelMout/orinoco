@@ -1,22 +1,55 @@
 ﻿@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+/*Police coiny*/
+@font-face {
+    font-family: 'coiny';
+    src: url('polices/coiny/coiny-regular-webfont.eot');
+    src: url('polices/coiny/coiny-regular-webfont.eot?#iefix') format('embedded-opentype'), url('polices/coiny/coiny-regular-webfont.woff2') 
+    format('woff2'), url('polices/coiny/coiny-regular-webfont.woff') format('woff'), url('polices/coiny/coiny-regular-webfont.ttf') 
+    format('truetype'), url('polices/coiny/coiny-regular-webfont.svg#coinyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Police brushstroke*/
+@font-face {
+    font-family: 'brushstroke';
+    src: url('polices/brushstroke/BRUSHSTP-webfont.eot');
+    src: url('polices/brushstroke/BRUSHSTP-webfont.eot?#iefix') format('embedded-opentype'), url('polices/brushstroke/BRUSHSTP-webfont.woff2') 
+    format('woff2'), url('polices/brushstroke/BRUSHSTP-webfont.woff') format('woff'), url('polices/brushstroke/BRUSHSTP-webfont.ttf') 
+    format('truetype'), url('polices/brushstroke/BRUSHSTP-webfont.svg#brushstroke_plainplain') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1{
+    font-family:brushstroke,Arial;
+    color:#A552C3;
+}
+
+h2 {
+    font-family: brushstroke;
+    color: #A552C3;
+}
+
+
 /*footer fixe*/
-footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'brushstroke',Arial;
 }
 /*header fixe*/
 header {
     position: fixed;
-    position:relative;
+    position: relative;
     top: 0;
     width: 100%;
+    
 }
 
-/*#corps{
-    position:relative;
-}*/
+
 
 /*Position des élements dans ENTETE*/
 svg{
@@ -32,6 +65,28 @@ svg{
 #accueil {
     position: relative;
     top: 1.6rem;
-    right:1rem;
-    
+    right: 1rem;
+    font-family: 'brushstroke',Arial;
+    font-size: 1.3rem;
+}
+
+/*Page Accueil*/
+.card-text {
+    font-family: coiny;
+    font-size: 1.4rem;
+    color: #8E4311; /*brun*/
+}
+#corps{
+    margin-top:5rem;
+    & h1{
+        margin-bottom:4rem;
+    }
+}
+
+
+/*Page Ours*/
+#nom-titre {
+    font-family: coiny;
+    font-size: 2rem;
+    color: #8E4311; /*brun*/
 }
