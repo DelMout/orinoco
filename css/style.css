@@ -9897,7 +9897,7 @@ h3 {
 @font-face {
   font-family: "coiny";
   src: url("polices/coiny/coiny-regular-webfont.eot");
-  src: url("polices/coiny/coiny-regular-webfont.eot?#iefix") format("embedded-opentype"), url("polices/coiny/coiny-regular-webfont.woff2") format("woff2"), url("polices/coiny/coiny-regular-webfont.woff") format("woff"), url("polices/coiny/coiny-regular-webfont.ttf") format("truetype"), url("polices/coiny/coiny-regular-webfont.svg#coinyregular") format("svg");
+  src: url("polices/coiny/coiny-regular-webfont.eot?#iefix") format("embedded-opentype"), url("polices/coiny/coiny-regular-webfont.woff") format("woff2"), url("polices/coiny/coiny-regular-webfont.woff") format("woff"), url("polices/coiny/coiny-regular-webfont.ttf") format("truetype"), url("polices/coiny/coiny-regular-webfont.svg#coinyregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -9905,7 +9905,7 @@ h3 {
 @font-face {
   font-family: "brushstroke";
   src: url("polices/brushstroke/BRUSHSTP-webfont.eot");
-  src: url("polices/brushstroke/BRUSHSTP-webfont.eot?#iefix") format("embedded-opentype"), url("polices/brushstroke/BRUSHSTP-webfont.woff2") format("woff2"), url("polices/brushstroke/BRUSHSTP-webfont.woff") format("woff"), url("polices/brushstroke/BRUSHSTP-webfont.ttf") format("truetype"), url("polices/brushstroke/BRUSHSTP-webfont.svg#brushstroke_plainplain") format("svg");
+  src: url("polices/brushstroke/BRUSHSTP-webfont.eot?#iefix") format("embedded-opentype"), url("polices/brushstroke/BRUSHSTP-webfont.woff") format("woff2"), url("polices/brushstroke/BRUSHSTP-webfont.woff") format("woff"), url("polices/brushstroke/BRUSHSTP-webfont.ttf") format("truetype"), url("polices/brushstroke/BRUSHSTP-webfont.svg#brushstroke_plainplain") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -9916,7 +9916,7 @@ h1 {
 }
 
 h2 {
-  font-family: brushstroke;
+  font-family: coiny;
   color: #A552C3;
   /*violine*/
 }
@@ -9937,6 +9937,10 @@ header {
   width: 100%;
 }
 
+.jumbotron {
+  background-color: #F3E9F1;
+}
+
 /*Position des élements dans ENTETE*/
 svg {
   position: relative;
@@ -9950,32 +9954,6 @@ svg {
   z-index: 100;
 }
 
-/******MEDIA QUERIES*******/
-/*pour Nbre produits*/
-@media only screen and (max-width: 1024px) {
-  #nbreProd {
-    top: -2rem;
-    left: -13%;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #nbreProd {
-    top: -2rem;
-    left: -11%;
-  }
-}
-@media only screen and (max-width: 576px) {
-  #nbreProd {
-    top: -1.8rem;
-    left: -5%;
-  }
-}
-@media only screen and (max-width: 375px) {
-  #nbreProd {
-    top: -2rem;
-    left: -12%;
-  }
-}
 #accueil {
   position: relative;
   top: 1.6rem;
@@ -9993,10 +9971,14 @@ svg {
 }
 
 #corps {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 #corps h1 {
-  margin-bottom: 4rem;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+#corps h2 {
+  font-size: 2.5rem;
 }
 
 /*Page Ours*/
@@ -10017,6 +9999,74 @@ svg {
 .remerciement #order_id {
   color: #A552C3;
   /*violine*/
+}
+
+/******MEDIA QUERIES*******/
+/*pour Nbre produits*/
+@media only screen and (max-width: 1024px) {
+  #nbreProd {
+    top: -2rem;
+    left: -13%;
+  }
+
+  #corps {
+    margin-top: 4rem;
+  }
+  #corps h1 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  #corps h2 {
+    font-size: 1.8rem;
+  }
+
+  .card-text {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #nbreProd {
+    top: -2rem;
+    left: -11%;
+  }
+
+  #corps {
+    margin-top: 3rem;
+  }
+  #corps h1 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  #corps h2 {
+    font-size: 1.4rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  #nbreProd {
+    top: -1.8rem;
+    left: -5%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  #nbreProd {
+    top: -2rem;
+    left: -12%;
+  }
+
+  #corps {
+    margin-top: 1rem;
+  }
+  #corps h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  #corps h2 {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

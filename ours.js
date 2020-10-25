@@ -268,5 +268,6 @@ if (document.location.reload = true) {
         console.log("indexNom>0 : " + localStorage.getItem("indexNom"));
         color(localStorage.getItem("indexNom"));
         affiche(localStorage.getItem("indexNom"), 1);
+        localStorage.setItem("quantite", "1");     // Stockage de la quantite par défaut à 1
     }
 }
