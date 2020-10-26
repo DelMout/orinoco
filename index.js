@@ -43,3 +43,11 @@ const garfunkel = document.getElementById("garfunkel");
 garfunkel.addEventListener('click', function () {
     localStorage.setItem("indexNom", 5);
 });
+
+
+// MEDIA QUERIES pour petit écran : Cartes en colonne
+if (window.matchMedia("(max-width:700px)").matches) {
+    const parentCards = document.getElementById("parent-cards");
+    parentCards.classList.replace("row", "col-10");
+    parentCards.classList.replace("mt-5", "my-3");
+}
