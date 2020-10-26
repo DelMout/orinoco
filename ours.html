@@ -11,36 +11,32 @@
 <body>
     <!--ENTETE-->
     <header>
-        <div class="container-fluid py-0 px-5 jumbotron">
+        <div class="container-fluid py-0 px-md-5 px-1 jumbotron">
             <div class="row">
                 <div class="col">
-                    <nav class="row navbar navbar-expand-md navbar-dark">
-                        <a class="col-9 navbar-brand" href="index.html">
-                            <img src="images/logo.png" width="140" height="80" alt="Logo Orinoco" />
+                    <nav class="row navbar navbar-expand navbar-dark">
+                        <a class="col-lg-2 col-md-3 col-sm-3 col-5 navbar-brand" href="index.html">
+                            <img src="images/logo.png" class=" w-lg-75 w-100" alt="Logo Orinoco" />
                         </a>
-
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div id="navbarContent" class="col collapse navbar-collapse">
-                            <ul class="navbar-nav">
-                                <li class="nav-item  ">
-                                    <a id="accueil" class="nav-link text-dark mx-5" href="index.html">Accueil</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link " href="panier.html">
-                                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-basket3-fill text-dark ml-2 pl-n2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z" />
-                                            <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
-                                        </svg>
-                                        <div id="nbreProd" class=" bg-warning text-center font-weight-bold text-dark rounded-circle mx-4 ">
-                                            <!--Affiche le nombre de produits dans le panier-->
-                                        </div>
-
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class=" col-lg-7 col-md-5 col-sm-3 col-1">
+                            <!--Pour espacer les liens sur barre navigation-->
                         </div>
+                        <ul class="col navbar-nav">
+                            <li class="nav-item">
+                                <a id="accueil" class="nav-link text-dark mx-sm-5 mx-2" href="index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="panier.html">
+                                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-basket3-fill text-dark w-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z" />
+                                        <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
+                                    </svg>
+                                    <div id="nbreProd" class=" bg-warning text-center font-weight-bold text-dark rounded-circle px-xl-0 mx-xl-3 mx-3 w-50 ">
+                                        <!--Affiche le nombre de produits dans le panier-->
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
@@ -48,8 +44,8 @@
     </header>
     <!-- PRODUIT -->
     <div class="container-fluid my-3">
-        <div id="choix" class="row">
-            <div class="col-4 text-left px-5">
+        <div id="choix" class="row mb-5">
+            <div id="infosOurs" class="col-xl-4 col-lg-5 text-left px-xl-5 px-2">
                 <div class="text-left text-primary font-weight-bold mb-5">
                     <h1>
                         Faites vos choix :
@@ -88,19 +84,19 @@
                     <!--Affiche la description-->
                 </div>
                 <div id="prix" class="my-2">
-                    <p class="col-3 bg-secondary text-light text-left p-2 my-0 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
+                    <p class="col-xl-4 col-lg-3 col-sm-2 col-4 bg-secondary text-light text-center p-2 my-0 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
                 </div>
                 <div class="row">
-                    <div class="col-8 font-weight-bold my-auto">
+                    <div class="col font-weight-bold my-auto">
                         <p id="valide" class="mb-0"></p> <!--Affiche un commentaire soit oubli sélection couleur ou faire un ajout-->
                     </div>
                     <div class="col text-right">
-                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg my-0">Ajouter<br />au panier</button>   <!--Bouton mis au panier-->
+                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg my-3">Ajouter<br />au panier</button>   <!--Bouton mis au panier-->
                         <button type="button" id="bouton-ajout" class="bg-info d-none btn-lg text-light shadow-lg">+</button>   <!--Bouton ajout autres produits-->
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div id="cadrePhoto" class="col bg-warning">
                 <div class="text-center text-primary font-weight-bold mx-auto my-3">
                     <h2 id="nom-titre">
                         <!--Ici Nom de l'ourson-->
@@ -112,20 +108,17 @@
             </div>
         </div>
     </div>
-
-
-
         <!-- PIED DE PAGE -->
-    <footer class="jumbotron my-0 py-3">
+    <footer class="jumbotron mb-0 mt-5 py-3">
         <div class="container-fluid ">
             <div class="row">
-                <div class="col-4 mx-auto">
+                <div class="col-xl-4 col-md-6 col-12 mx-auto">
                     <div class="row">
-                        <div class="col-6">
-                            <a class="text-dark" href="#">Mentions légales</a>
+                        <div class="col-6 text-center">
+                            <a class="text-dark " href="#">Mentions légales</a>
                         </div>
-                        <div class="col-6">
-                            <a class="text-dark" href="#">Contactez-nous</a>
+                        <div class="col bg text-center">
+                            <a class="text-dark " href="#">Contactez-nous</a>
                         </div>
                     </div>
                 </div>

@@ -164,9 +164,20 @@ const affiche = (x,y) => {
             console.log("y :" + y);
             let affDescription = document.getElementById("description");
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
-            let affPhoto = document.getElementById("photo");
-            affPhoto.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' />";     // Affiche la photo du produit selectionne
-            let nomH2 = document.getElementById("nom-titre");
+            const affPhoto = document.getElementById("photo");
+            if (window.matchMedia("(max-width:400px)").matches) {//Media Queries : Adaptation largeur photo ourson
+                let widthPhoto = "250";
+                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
+            } else if (window.matchMedia("(max-width:992px)").matches) {
+                let widthPhoto = "400";
+                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+            }else if (window.matchMedia("(max-width:1300px)").matches) {
+                let widthPhoto = "500";
+                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+            } else {
+                affPhoto.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
+            }
+                let nomH2 = document.getElementById("nom-titre");
             nomH2.innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
         })
         
@@ -221,7 +232,6 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         console.log("length : " + localStorage.length);
         if (localStorage.length <7) {   // Seulement le id et qté de renseignés
             localStorage.setItem("nbreLignes", 1);
-            
         } else {
             let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
             localStorage.setItem("nbreLignes", n); // Nbre de lignes de commandes mis dans le panier
@@ -271,3 +281,10 @@ if (document.location.reload = true) {
         localStorage.setItem("quantite", "1");     // Stockage de la quantite par défaut à 1
     }
 }
+
+// MEDIA QUERIES 
+//if (window.matchMedia("(max-width:768px)").matches) {       // Tablette
+//    let info = document.getElementById("infosOurs").innerHTML;
+//    document.getElementById("infosOurs").innerHTML = document.getElementById("cadrePhoto").innerHTML;   // Inverser photoOurs avec formulaire
+//    document.getElementById("cadrePhoto").innerHTML = info;
+//}  

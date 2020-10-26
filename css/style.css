@@ -9974,11 +9974,13 @@ svg {
   margin-top: 6rem;
   margin-bottom: 5rem;
 }
-#corps h1 {
+
+h1 {
   font-size: 3rem;
   margin-bottom: 3rem;
 }
-#corps h2 {
+
+h2 {
   font-size: 2.5rem;
 }
 
@@ -9988,6 +9990,10 @@ svg {
   font-size: 2rem;
   color: #8E4311;
   /*brun*/
+}
+
+#choix h1 {
+  font-size: 2rem;
 }
 
 /*Page commande*/
@@ -10003,7 +10009,6 @@ svg {
 }
 
 /******MEDIA QUERIES*******/
-/*pour Nbre produits*/
 @media only screen and (max-width: 1024px) {
   #nbreProd {
     top: -2rem;
@@ -10013,11 +10018,13 @@ svg {
   #corps {
     margin-top: 4rem;
   }
-  #corps h1 {
+
+  h1 {
     font-size: 2rem;
     margin-bottom: 3rem;
   }
-  #corps h2 {
+
+  h2 {
     font-size: 1.8rem;
   }
 
@@ -10034,11 +10041,13 @@ svg {
   #corps {
     margin-top: 3rem;
   }
-  #corps h1 {
+
+  h1 {
     font-size: 1.6rem;
     margin-bottom: 2rem;
   }
-  #corps h2 {
+
+  h2 {
     font-size: 1.4rem;
   }
 
@@ -10061,11 +10070,13 @@ svg {
   #corps {
     margin-top: 1rem;
   }
-  #corps h1 {
+
+  h1 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
-  #corps h2 {
+
+  h2 {
     font-size: 1rem;
   }
 }

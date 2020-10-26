@@ -44,7 +44,7 @@ header {
     width: 100%;
 }
 
-.jumbotron {    // Pour ENTETE et PIED DE PAGE
+.jumbotron { // Pour ENTETE et PIED DE PAGE
     background-color: #F3E9F1;
 }
 
@@ -61,6 +61,7 @@ svg {
     left: 1%;
     z-index: 100;
 }
+
 #accueil {
     position: relative;
     top: 1.6rem;
@@ -79,19 +80,21 @@ svg {
     font-size: 1.4rem;
     color: #8E4311; /*brun*/
 }
+
 #corps {
     margin-top: 6rem;
-    margin-bottom:5rem;
-
-    & h1 {
-        font-size: 3rem;
-        margin-bottom: 3rem;
-    }
-
-    & h2 {
-        font-size: 2.5rem;
-    }
+    margin-bottom: 5rem;
 }
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
 
 
 
@@ -101,6 +104,12 @@ svg {
     font-size: 2rem;
     color: #8E4311; /*brun*/
 }
+#choix{
+    & h1{
+        font-size:2rem;
+    }
+}
+
 
 /*Page commande*/
 .remerciement {
@@ -114,22 +123,25 @@ svg {
 
 
 /******MEDIA QUERIES*******/
-/*pour Nbre produits*/
 @media only screen and (max-width: 1024px) {
     #nbreProd {
         top: -2rem;
         left: -13%;
     }
-    #corps{
-        margin-top:4rem;
-        & h1{
-            font-size:2rem;
-            margin-bottom:3rem;
-        }
-        & h2{
-            font-size:1.8rem;
-        }
+
+    #corps {
+        margin-top: 4rem;
     }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
     .card-text {
         font-size: 1.2rem;
     }
@@ -140,20 +152,22 @@ svg {
         top: -2rem;
         left: -11%;
     }
+
     #corps {
         margin-top: 3rem;
-
-        & h1 {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-        }
-
-        & h2 {
-            font-size: 1.4rem;
-        }
     }
-    .card-text{
-        font-size:0.8rem;
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
     }
 }
 
@@ -169,15 +183,17 @@ svg {
         top: -2rem;
         left: -12%;
     }
-    #corps {
-        margin-top:1rem;
-        & h1 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
 
-        & h2 {
-            font-size: 1rem;
-        }
+    #corps {
+        margin-top: 1rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1rem;
     }
 }
