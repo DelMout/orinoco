@@ -104,11 +104,23 @@ h2 {
     font-size: 2rem;
     color: #8E4311; /*brun*/
 }
-#choix{
-    & h1{
-        font-size:2rem;
+
+#choix {
+    & h1 {
+        font-size: 2rem;
     }
 }
+
+/*Page Panier*/
+#panier {
+    & h1 {
+        font-size: 2rem;
+    }
+}
+.poubelleSM{
+    color:red;
+}
+
 
 
 /*Page commande*/
@@ -176,6 +188,11 @@ h2 {
         top: -1.8rem;
         left: -5%;
     }
+    #panier {
+        & h1 {
+            font-size: 1.8rem;
+        }
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -195,5 +212,10 @@ h2 {
 
     h2 {
         font-size: 1rem;
+    }
+    #panier {
+        & h1 {
+            font-size: 1.2rem;
+        }
     }
 }
