@@ -9985,15 +9985,14 @@ h2 {
 }
 
 /*Page Ours*/
-#nom-titre {
+#choix h1 {
+  font-size: 2rem;
+}
+#choix h2 {
   font-family: coiny;
   font-size: 2rem;
   color: #8E4311;
   /*brun*/
-}
-
-#choix h1 {
-  font-size: 2rem;
 }
 
 /*Page Panier*/
@@ -10015,6 +10014,13 @@ h2 {
 .remerciement #order_id {
   color: #A552C3;
   /*violine*/
+}
+
+#commande h1 {
+  font-size: 2rem;
+}
+#commande h2 {
+  font-size: 1.8rem;
 }
 
 /******MEDIA QUERIES*******/
@@ -10040,6 +10046,17 @@ h2 {
   .card-text {
     font-size: 1.2rem;
   }
+
+  #commande h1 {
+    font-size: 1.8rem;
+  }
+  #commande h2 {
+    font-size: 1.6rem;
+  }
+
+  .remerciement {
+    font-size: 1rem;
+  }
 }
 @media only screen and (max-width: 768px) {
   #nbreProd {
@@ -10063,6 +10080,17 @@ h2 {
   .card-text {
     font-size: 0.8rem;
   }
+
+  #commande h1 {
+    font-size: 1.6rem;
+  }
+  #commande h2 {
+    font-size: 1.4rem;
+  }
+
+  #alerte {
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (max-width: 576px) {
   #nbreProd {
@@ -10072,6 +10100,17 @@ h2 {
 
   #panier h1 {
     font-size: 1.8rem;
+  }
+
+  #commande h1 {
+    font-size: 1.4rem;
+  }
+  #commande h2 {
+    font-size: 1.2rem;
+  }
+
+  #alerte {
+    font-size: 0.7rem;
   }
 }
 @media only screen and (max-width: 375px) {

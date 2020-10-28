@@ -164,21 +164,38 @@ const affiche = (x,y) => {
             console.log("y :" + y);
             let affDescription = document.getElementById("description");
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
-            const affPhoto = document.getElementById("photo");
+            const affPhoto1 = document.getElementById("photo1");
+            const affPhoto2 = document.getElementById("photo2");
             if (window.matchMedia("(max-width:400px)").matches) {//Media Queries : Adaptation largeur photo ourson
                 let widthPhoto = "250";
-                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
+                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
+                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
+                
+
             } else if (window.matchMedia("(max-width:992px)").matches) {
                 let widthPhoto = "400";
-                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
-            }else if (window.matchMedia("(max-width:1300px)").matches) {
+                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+
+            } else if (window.matchMedia("(max-width:1300px)").matches) {
                 let widthPhoto = "500";
-                affPhoto.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+
             } else {
-                affPhoto.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
+                affPhoto1.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
+                affPhoto2.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
             }
-                let nomH2 = document.getElementById("nom-titre");
-            nomH2.innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
+                let nomH2 = document.getElementsByTagName("h2");
+            nomH2[0].innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
+            nomH2[1].innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
+
+            if (window.matchMedia("(max-width:768px)").matches) {//Media Queries : Afficher photo Ourson en 1er
+                const cadrePhoto1 = document.getElementById("cadrePhoto1");
+                const cadrePhoto2 = document.getElementById("cadrePhoto2");
+                cadrePhoto1.classList.remove("d-none");
+                cadrePhoto2.classList.add("d-none");
+            }
         })
         
 }

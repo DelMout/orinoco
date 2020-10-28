@@ -99,15 +99,15 @@ h2 {
 
 
 /*Page Ours*/
-#nom-titre {
-    font-family: coiny;
-    font-size: 2rem;
-    color: #8E4311; /*brun*/
-}
-
 #choix {
     & h1 {
         font-size: 2rem;
+    }
+
+    & h2 {
+        font-family: coiny;
+        font-size: 2rem;
+        color: #8E4311; /*brun*/
     }
 }
 
@@ -132,6 +132,14 @@ h2 {
         color: #A552C3; /*violine*/
     }
 }
+#commande {
+    & h1 {
+        font-size: 2rem;
+    }
+    & h2{
+        font-size:1.8rem;
+    }
+}
 
 
 /******MEDIA QUERIES*******/
@@ -140,22 +148,29 @@ h2 {
         top: -2rem;
         left: -13%;
     }
-
     #corps {
         margin-top: 4rem;
     }
-
     h1 {
         font-size: 2rem;
         margin-bottom: 3rem;
     }
-
     h2 {
         font-size: 1.8rem;
     }
-
     .card-text {
         font-size: 1.2rem;
+    }
+    #commande {
+        & h1 {
+            font-size: 1.8rem;
+        }
+        & h2 {
+            font-size: 1.6rem;
+        }
+    }
+    .remerciement {
+        font-size: 1rem;
     }
 }
 
@@ -164,22 +179,29 @@ h2 {
         top: -2rem;
         left: -11%;
     }
-
     #corps {
         margin-top: 3rem;
     }
-
     h1 {
         font-size: 1.6rem;
         margin-bottom: 2rem;
     }
-
     h2 {
         font-size: 1.4rem;
     }
-
     .card-text {
         font-size: 0.8rem;
+    }
+    #commande {
+        & h1 {
+            font-size: 1.6rem;
+        }
+        & h2 {
+            font-size: 1.4rem;
+        }
+    }
+    #alerte{
+        font-size:0.8rem;
     }
 }
 
@@ -192,6 +214,18 @@ h2 {
         & h1 {
             font-size: 1.8rem;
         }
+    }
+    #commande {
+        & h1 {
+            font-size: 1.4rem;
+        }
+
+        & h2 {
+            font-size: 1.2rem;
+        }
+    }
+    #alerte {
+        font-size: 0.7rem;
     }
 }
 

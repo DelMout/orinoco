@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="Orinoco personnalise pour vous votre ours en peluche fait main.">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Orinoco : Ours en peluche faits main</title>
+    <title>Orinoco : Choix ours en peluche</title>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -45,6 +45,16 @@
     <!-- PRODUIT -->
     <div class="container-fluid my-3">
         <div id="choix" class="row mb-5">
+            <div id="cadrePhoto1" class="col d-none">    <!--1er cadre photo pour PETIT ECRAN-->
+                <div class="text-center text-primary font-weight-bold mx-auto my-3">
+                    <h2>
+                        <!--Ici Nom de l'ourson-->
+                    </h2>
+                </div>
+                <div id="photo1" class="text-center mb-5">
+                     <!--ici la photo de l'article selectionne--> 
+                </div>
+            </div>
             <div id="infosOurs" class="col-xl-4 col-lg-5 text-left px-xl-5 px-2">
                 <div class="text-left text-primary font-weight-bold mb-5">
                     <h1>
@@ -76,7 +86,7 @@
                     <div class="form-group">
                         <label for="choix-quantite">Choisissez le nombre de produits :</label>
                         <select name="quantite" id="choix-quantite" class="form-control">
-                            <!--Menu deroulant cree en js   - de 1 a 20-  -->
+                            <!--Menu deroulant cree en js   - de 1 a 20--->  
                         </select>
                     </div>
                 </form>
@@ -86,7 +96,7 @@
                 <div id="prix" class="my-2">
                     <p class="col-xl-4 col-lg-3 col-sm-2 col-4 bg-secondary text-light text-center p-2 my-0 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
                 </div>
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col font-weight-bold my-auto">
                         <p id="valide" class="mb-0"></p> <!--Affiche un commentaire soit oubli sélection couleur ou faire un ajout-->
                     </div>
@@ -96,13 +106,13 @@
                     </div>
                 </div>
             </div>
-            <div id="cadrePhoto" class="col">
+            <div id="cadrePhoto2"class="col">            <!--2e cadre photo pour PETIT ECRAN-->
                 <div class="text-center text-primary font-weight-bold mx-auto my-3">
-                    <h2 id="nom-titre">
+                    <h2>
                         <!--Ici Nom de l'ourson-->
                     </h2>
                 </div>
-                <div id="photo" class="text-center mb-5">
+                <div id="photo2" class="photo text-center mb-5">
                     <!-- ici la photo de l'article selectionne -->
                 </div>
             </div>

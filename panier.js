@@ -25,6 +25,47 @@ selectReset.addEventListener('click', function (event) {   // Action apres clic 
     window.location.reload();
 });
 
+// Fonction pour supprimer une ligne dans PANIER
+const supprLigneCommande = (n,nbLignes) => {    // Fonction pour SUPPRIMER une ligne du panier (sur tableau SM ou LG)
+    for (let i = 0; i < 6; i++) {
+        let _ncle = "_" + n + cle[i];
+        localStorage.removeItem(_ncle); // Suppresion des données de cette ligne dans localStorage
+    }
+    if (n < nbLignes) { // reindexation des lignes suivantes
+        for (let e = n; e < nbLignes; e++) {
+            for (let c = 0; c <= 5; c++) {
+                const infoCle = cle[c];
+                const _ncle = "_" + n + infoCle;
+                let m = parseInt(n) + 1;
+                console.log("m :" + m);
+                const _cleSuivante = "_" + m + infoCle;
+                const donneeSuivante = localStorage.getItem(_cleSuivante);
+                localStorage.setItem(_ncle, donneeSuivante);
+                console.log("ncle : " + _ncle + "  &  " + "donnee : " + donneeSuivante);
+            }
+        }
+    }
+    // Suppresion de la dernière ligne du TABLEAU
+    const d = localStorage.getItem("nbreLignes");
+    const qT = localStorage.getItem("qteTotal");
+    const qcle = "_" + d + "Quantite";  // Clé de la quantité commandée sur la dernière ligne
+    const _q = localStorage.getItem(qcle);  // Quantité commandée sur la dernière ligne
+    for (i = 0; i < 6; i++) {
+        let _dcle = "_" + d + cle[i];
+        localStorage.removeItem(_dcle);
+    }
+    if (d <= "1") {
+        localStorage.clear();
+        localStorage.setItem("nbreLignes", 0);
+        localStorage.setItem("qteTotal", 0);
+    } else {
+        localStorage.setItem("nbreLignes", d - 1);  // Mise à jour du nbre de lignes
+        localStorage.setItem("qteTotal", qT - _q);   // Mise à jour du nombre de produits
+    }
+    tableauPanier();
+    window.location.reload();
+}
+
 
 const cle = ['Nom', 'Couleur', 'Id', 'Quantite', 'PrixUni', 'PrixTotal'];     // Tableaux des clés du localStorage
 const titre = ['Article', 'Couleur', 'Identifiant', 'Quantit\u00e9', 'Prix unitaire', 'Prix total', 'Supprimer'];     // Tableaux des titres du TABLEAU PANIER
@@ -64,6 +105,7 @@ const tableauPanier = () => {
 
                 const newTr = document.createElement("tr");
                 parent.appendChild(newTr);
+                newTr.setAttribute("style", "display:block");// Pour affichage colspan sur Chrome
                 let newTh = document.createElement("th");
                 newTr.appendChild(newTh);
                 if (n % 2 == 00) {
@@ -92,9 +134,10 @@ const tableauPanier = () => {
             newTr.appendChild(newTh);
             newTh.innerHTML = "Supprimer cet article";
             let poubelleSM = "poubelleSM" + n;
-            newTh.setAttribute("id", poubelleSM);
-            newTh.classList.add("class", "poubelleSM");
             newTh.setAttribute("colspan", "2");
+            newTh.setAttribute("id", poubelleSM);
+            newTh.setAttribute("style", "display:block");   // Pour affichage colspan sur Chrome
+            newTh.classList.add("poubelleSM");
             newTh.setAttribute("type", "button");
             if (n % 2 == 00) {
                 const bg = "table-light";
@@ -104,55 +147,20 @@ const tableauPanier = () => {
                 newTh.classList.add(bg);
             }
 
-
-            // VOIR SI Action sur bouton POUBELLE SM ******************** voir pour METTRE FONCTION pour ces 2 POUBELLES !!!
+            
             // Supprimer une ligne avec icone "PoubelleSM"
             const poubelleS = document.getElementById(poubelleSM);
-            poubelleS.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleLG
-                for (let i = 0; i < 6; i++) {
-                    let _ncle = "_" + n + cle[i];
-                    localStorage.removeItem(_ncle); // Suppresion des données de cette ligne dans localStorage
-                }
-                if (n < nbLignes) { // reindexation des lignes suivantes
-                    for (let e = n; e < nbLignes; e++) {
-                        for (let c = 0; c <= 5; c++) {
-                            const infoCle = cle[c];
-                            const _ncle = "_" + n + infoCle;
-                            let m = parseInt(n) + 1;
-                            console.log("m :" + m);
-                            const _cleSuivante = "_" + m + infoCle;
-                            const donneeSuivante = localStorage.getItem(_cleSuivante);
-                            localStorage.setItem(_ncle, donneeSuivante);
-                            console.log("ncle : " + _ncle + "  &  " + "donnee : " + donneeSuivante);
-                        }
-                    }
-                }
-                // Suppresion de la dernière ligne du TABLEAU
-                const d = localStorage.getItem("nbreLignes");
-                const qT = localStorage.getItem("qteTotal");
-                const qcle = "_" + d + "Quantite";  // Clé de la quantité commandée sur la dernière ligne
-                const _q = localStorage.getItem(qcle);  // Quantité commandée sur la dernière ligne
-                for (i = 0; i < 6; i++) {
-                    let _dcle = "_" + d + cle[i];
-                    localStorage.removeItem(_dcle);
-                }
-                if (d <= "1") {
-                    localStorage.clear();
-                    localStorage.setItem("nbreLignes", 0);
-                    localStorage.setItem("qteTotal", 0);
-                } else {
-                    localStorage.setItem("nbreLignes", d - 1);  // Mise à jour du nbre de lignes
-                    localStorage.setItem("qteTotal", qT - _q);   // Mise à jour du nombre de produits
-                }
-                tableauPanier();
-                window.location.reload();
-
+            poubelleS.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleSM
+                supprLigneCommande(n,nbLignes);
             });
-
-
-
-
         }
+        // Afficher le prix total
+        const newTfoot = document.createElement('tfoot');
+        newTfoot.classList.add("font-weight-bold", "bg-dark", "text-light", "text-left");
+        parent.appendChild(newTfoot);
+        const newTh1 = document.createElement("th");
+        newTfoot.appendChild(newTh1);
+        newTh1.innerHTML = "TOTAL : " + total + " \u20ac";
 
     } else {                                                            // MEDIA QUERIES Grand format
         // Construction du TABLEAU de synthèse
@@ -198,44 +206,7 @@ const tableauPanier = () => {
             // Supprimer une ligne avec icone "PoubelleLG"
             const poubelleL = document.getElementById(poubelleLG);
             poubelleL.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleLG
-                for (let i = 0; i < 6; i++) {
-                    let _ncle = "_" + n + cle[i];
-                    localStorage.removeItem(_ncle); // Suppresion des données de cette ligne dans localStorage
-                }
-                if (n < nbLignes) { // reindexation des lignes suivantes
-                    for (let e = n; e < nbLignes; e++) {
-                        for (let c = 0; c <= 5; c++) {
-                            const infoCle = cle[c];
-                            const _ncle = "_" + n + infoCle;
-                            let m = parseInt(n) + 1;
-                            console.log("m :" + m);
-                            const _cleSuivante = "_" + m + infoCle;
-                            const donneeSuivante = localStorage.getItem(_cleSuivante);
-                            localStorage.setItem(_ncle, donneeSuivante);
-                            console.log("ncle : " + _ncle + "  &  " + "donnee : " + donneeSuivante);
-                        }
-                    }
-                }
-                // Suppresion de la dernière ligne du TABLEAU
-                const d = localStorage.getItem("nbreLignes");
-                const qT = localStorage.getItem("qteTotal");
-                const qcle = "_" + d + "Quantite";  // Clé de la quantité commandée sur la dernière ligne
-                const _q = localStorage.getItem(qcle);  // Quantité commandée sur la dernière ligne
-                for (i = 0; i < 6; i++) {
-                    let _dcle = "_" + d + cle[i];
-                    localStorage.removeItem(_dcle);
-                }
-                if (d <= "1") {
-                    localStorage.clear();
-                    localStorage.setItem("nbreLignes", 0);
-                    localStorage.setItem("qteTotal", 0);
-                } else {
-                    localStorage.setItem("nbreLignes", d - 1);  // Mise à jour du nbre de lignes
-                    localStorage.setItem("qteTotal", qT - _q);   // Mise à jour du nombre de produits
-                }
-                tableauPanier();
-                window.location.reload();
-
+                supprLigneCommande(n,nbLignes);
             });
 
         }
@@ -255,6 +226,8 @@ const tableauPanier = () => {
         newTfoot.appendChild(newTd3);
     }
 }
+
+
 
 tableauPanier();
 
