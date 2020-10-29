@@ -2,7 +2,6 @@
 
 // LocalStorage à mettre à 0 si commande passée précédemment
 const unNom = localStorage.getItem("votreNom");
-console.log("nom ? : " + unNom);
 if (unNom == null) {
     // Pas de commande d'enregistrée donc NE PAS vider le panier
 } else {

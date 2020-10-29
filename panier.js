@@ -3,7 +3,6 @@
 
 // LocalStorage à mettre à 0 si commande passée précédemment
 const unNom = localStorage.getItem("votreNom");
-console.log("nom ? : " + unNom);
 if (unNom == null) {
     // Pas de commande d'enregistrée donc NE PAS vider le panier
 } else {
@@ -37,11 +36,9 @@ const supprLigneCommande = (n,nbLignes) => {    // Fonction pour SUPPRIMER une l
                 const infoCle = cle[c];
                 const _ncle = "_" + n + infoCle;
                 let m = parseInt(n) + 1;
-                console.log("m :" + m);
                 const _cleSuivante = "_" + m + infoCle;
                 const donneeSuivante = localStorage.getItem(_cleSuivante);
                 localStorage.setItem(_ncle, donneeSuivante);
-                console.log("ncle : " + _ncle + "  &  " + "donnee : " + donneeSuivante);
             }
         }
     }
@@ -102,7 +99,6 @@ const tableauPanier = () => {
             qteTotal = parseInt(localStorage.getItem(nCle3)) + qteTotal;
             localStorage.setItem("qteTotal", qteTotal); // Quantité total des produits stockée dans localStorage
             for (let c = 0; c <= 5; c++) {
-
                 const newTr = document.createElement("tr");
                 parent.appendChild(newTr);
                 newTr.setAttribute("style", "display:block");// Pour affichage colspan sur Chrome
@@ -146,8 +142,6 @@ const tableauPanier = () => {
                 const bg = "table-warning";
                 newTh.classList.add(bg);
             }
-
-            
             // Supprimer une ligne avec icone "PoubelleSM"
             const poubelleS = document.getElementById(poubelleSM);
             poubelleS.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleSM
@@ -208,7 +202,6 @@ const tableauPanier = () => {
             poubelleL.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleLG
                 supprLigneCommande(n,nbLignes);
             });
-
         }
         // Afficher le prix total
         const newTfoot = document.createElement('tfoot');
@@ -226,8 +219,6 @@ const tableauPanier = () => {
         newTfoot.appendChild(newTd3);
     }
 }
-
-
 
 tableauPanier();
 
@@ -252,10 +243,8 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
     const formu = document.getElementById("formu");
     const alerte = document.getElementById("alerte");
     if (formu.checkValidity() == false) {
-        console.log("c pas bien rempli !");
         alerte.innerHTML = "Votre formulaire est incomplet. Merci de corriger ou compl\u00e9ter les parties en rouge.<br/> Vous pourrez ensuite valider la commande."
     } else {
-        console.log("c bien rempli !");
         alerte.classList.add("d-none");
         // Création Tableau PRODUCTS avec les ID des produits
         const nbLignes = localStorage.getItem("nbreLignes");
@@ -264,7 +253,6 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
             let _nId = "_" + n + "Id";
             products.push(localStorage.getItem(_nId));
         }
-        console.log("products :" + products);
         // Création objet CONTACT
         const contact = new Contact(prenom.value, nom.value, adresse.value, ville.value, email.value);
         let corps = { contact, products };
@@ -272,8 +260,6 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
         localStorage.setItem("votrePrenom", prenom.value);
         localStorage.setItem("votreNom", nom.value);
         localStorage.setItem("eMail", email.value);
-
-
         // Appel de l'ID de COMMANDE
         fetch("http://localhost:3000/api/teddies/order", {
             method: "POST",
@@ -285,7 +271,6 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
             })
             .then((json) => {
                 let order_Id = json.orderId;
-                console.log("resp = " + order_Id);
                 localStorage.setItem("orderId", order_Id);  // Copie de ORDER_ID dans localStorage
                 document.location.href = "commande.html";      // Bascule sur la page COMMANDE
             })

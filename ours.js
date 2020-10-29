@@ -2,7 +2,6 @@
 
 // LocalStorage à mettre à 0 si commande passée précédemment
 const unNom = localStorage.getItem("votreNom");
-console.log("nom ? : " + unNom);
 if (unNom == null) {
     // Pas de commande d'enregistrée donc NE PAS vider le panier
 } else {
@@ -31,19 +30,15 @@ fetch("http://localhost:3000/api/teddies")
         return resp.json();
     })
     .then((all) => {
-        console.log("ca marche");
         let nTot = all.length;
-        console.log(nTot); // donne nombre total d'éléments dans le tableau
         return nTot;
     })
     .then((a) => {
         for (let i = 0; i < a; i++) {
         name(i);            // appel la fonction name
-        console.log("c sure ca marche");
         }
     })
     .catch((err) => {
-        console.log(err)
     })
 
 
@@ -54,18 +49,14 @@ const name = (i) => {
             return resp.json();
         })
         .then((all) => {
-            //console.log("ca marche");
-            /* console.log(all);*/ // donne -tableau- avec toutes les données de l'API = TOUS les éléments de TOUS les produits
             return all;
         })
         .then((tabl) => {
             let obj = tabl[i];
-            /*console.log(obj);  */// donne -objet- TOUS les éléments d'UN produit
             return obj;
         })
         .then((elem) => {
             let nom = elem.name;
-            /*console.log(nom);*/    //donne name du produit
             return nom;
         })
         .then((nom) => {
@@ -83,45 +74,33 @@ const color = (i) => {
             return resp.json();
         })
         .then((all) => {
-            //console.log("ca marche");
-            /* console.log(all);*/ // donne -tableau- avec toutes les données de l'API = TOUS les éléments de TOUS les produits
             return all;
         })
         .then((tabl) => {
             let obj = tabl[i - 1];
-            console.log(obj);  // donne -objet- TOUS les éléments d'UN produit
             return obj;
         })
         .then((elem) => {
             let nom = elem.name;  // Donne nom du produit
-            //localStorage.setItem("nom", nom); // Stocke nom
             let id = elem._id;  // Donne id du produit
-            //localStorage.setItem("id", id); // Stocke Id
             let colors = elem.colors;   //donne -tableau- avec LES couleurs du produit
             return colors;
         })
         .then((colors) => {
             let nbColors = colors.length;
-            console.log(nbColors); //donne NOMBRE de couleurs du produit
             let parentOpt = document.getElementById("choix-couleur");
             let opt = parentOpt.children;
-            console.log("Opt = " + opt);
             let nbOpt = opt.length;
-            console.log("nbre option AVANT = " + nbOpt);
-            //console.log("Item = "+opt.item(1));
             let ecart = nbOpt-1 - nbColors;   // Ecart entre Nbre ligns OPTION existantes et lignes COULEUR a afficher
-            console.log("Ecart = " + ecart);
             if (ecart > 0) {    // Supprimer des lignes OPTION
                 for (let s = 0; s < ecart; s++) {
                     parentOpt.removeChild(opt.item(1));
-                    console.log("ligne OPTION supprimee");
                 }
             } else {
                 if (ecart < 0) {    // Créer des lignes OPTION
                     for (let c = 0; c < ecart*-1; c++) {
                         let newOpt = document.createElement("option");
                         parentOpt.appendChild(newOpt);
-                        console.log("ligne OPTION creee");
                     }
                 }
             }
@@ -140,13 +119,10 @@ const affiche = (x,y) => {
             return resp.json();
         })
         .then((all) => {
-            //console.log("ca marche");
-            /* console.log(all);*/ // donne -tableau- avec toutes les données de l'API = TOUS les éléments de TOUS les produits
             return all;
         })
         .then((tabl) => {
             let obj = tabl[x-1];
-            console.log(obj);  // donne -objet- TOUS les éléments d'UN produit
             return obj;
         })
         .then((elem) => {
@@ -156,12 +132,10 @@ const affiche = (x,y) => {
             let description = elem.description;     // Description du produit
             let nom = elem.name;        // Nom de l'ourson
             let id = elem._id;      // Id du produit
-            console.log("id = " + id);
             localStorage.setItem("id", id); // Id mis temporairement dans localStorage
             let affPrix = document.getElementById("euros");
             affPrix.innerHTML = prix * y / 100 + " \u20ac";     // Affiche le prix du produit selectionne
             localStorage.setItem("prixTotal", prix * y / 100);     // Stocke prix total
-            console.log("y :" + y);
             let affDescription = document.getElementById("description");
             affDescription.innerHTML = description;     // Affiche la description du produit selectionne
             const affPhoto1 = document.getElementById("photo1");
@@ -205,12 +179,10 @@ const choixCouleur = document.getElementById("choix-couleur");
 const choixValide = document.getElementById("valide");
 const selectNom = document.getElementById('choix-nom');
 selectNom.addEventListener('change', function (event) {   // Action apres selection du NOM
-    console.log("selection faite");
     document.getElementById("choix-couleur").selectedIndex = 0; // Forcer le menu COULEUR sur la 1re option
     document.getElementById("choix-quantite").selectedIndex = 0; // Forcer le menu QUANTITE sur la 1re option
     let selectionNom = document.getElementById("choix-nom").selectedIndex;    //numero ordre de l'article
     localStorage.setItem("indexNom", selectionNom);   // stocke numero ordre du nom
-    console.log(selectionNom);
     color(selectionNom); // Appel la fonction COLOR
     affiche(selectionNom, 1);   // Appel la fonction AFFICHE
     
@@ -231,7 +203,6 @@ selectQuantite.addEventListener('change', function (event) {   // Action apres s
 });
 let selectPanier = document.getElementById('bouton-panier');
 selectPanier.addEventListener('click', function (event) {   // Action apres clic sur BOUTON PANIER
-    console.log("Validation PANIER");
     // Si pas de couleur sélectionnée alors message en rouge pour que l'user sélectionne une couleur (ET encadré rouge de la partie couleur)
     if (choixCouleur.value == "sel") {
         choixValide.innerHTML = "Vous n'avez pas s\u00e9lectionn\u00e9 de couleur.<br/>Faites un choix.";
@@ -246,13 +217,11 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         let btnAjout = document.getElementById("bouton-ajout");
         btnAjout.classList.remove("d-none");        // Afficher le bouton AJOUT
         // Sauvegarde des données dans localStorage
-        console.log("length : " + localStorage.length);
         if (localStorage.length <7) {   // Seulement le id et qté de renseignés
             localStorage.setItem("nbreLignes", 1);
         } else {
             let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
             localStorage.setItem("nbreLignes", n); // Nbre de lignes de commandes mis dans le panier
-            console.log("n = " + n);
         };
         let n = localStorage.getItem("nbreLignes");
         let nom = "_" + n + "Nom";
@@ -276,13 +245,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
 let selectAjout = document.getElementById('bouton-ajout');
 selectAjout.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT
     document.location.reload(true); // Recharge la page
-    // Incrément dans localStorage de nbreArticles
 });
-//const selectReset = document.getElementById('bouton-reset');
-//selectReset.addEventListener('click', function (event) {   // Action apres clic sur BOUTON RESET
-//    localStorage.clear();
-//    localStorage.setItem("qteTotal", 0);    // Mise à 0 de la QUANTITE TOTALE produits
-//});
 
 
 // Quand reload page, afficher -Selectionnez- dans le menu des noms  
@@ -292,16 +255,9 @@ if (document.location.reload = true) {
     // Positionner le 1er menu déroulant sur cet index
     if (localStorage.getItem("indexNom") > 0) {
         document.getElementById("choix-nom").selectedIndex = localStorage.getItem("indexNom");
-        console.log("indexNom>0 : " + localStorage.getItem("indexNom"));
         color(localStorage.getItem("indexNom"));
         affiche(localStorage.getItem("indexNom"), 1);
         localStorage.setItem("quantite", "1");     // Stockage de la quantite par défaut à 1
     }
 }
 
-// MEDIA QUERIES 
-//if (window.matchMedia("(max-width:768px)").matches) {       // Tablette
-//    let info = document.getElementById("infosOurs").innerHTML;
-//    document.getElementById("infosOurs").innerHTML = document.getElementById("cadrePhoto").innerHTML;   // Inverser photoOurs avec formulaire
-//    document.getElementById("cadrePhoto").innerHTML = info;
-//}  

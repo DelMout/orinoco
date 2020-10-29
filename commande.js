@@ -58,9 +58,6 @@ if (localStorage.length < 7) {
     newTfoot.appendChild(newTh1);
     newTh1.innerHTML = "TOTAL : " + total + " \u20ac";
 
-
-
-
 } else {                                                          // MEDIA QUERIES Grand format          
     // Ajout de lignes au tableau de synthèse
     let parent = document.getElementById("tableau");
