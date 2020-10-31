@@ -16,6 +16,11 @@ if (unNom == null) {
 const nbProd = document.getElementById("nbreProd");
 nbProd.innerHTML = localStorage.getItem("qteTotal");
 
+if (localStorage.getItem("qteTotal") > 0) {     // Si Panier non vide
+let selectVoirPanier = document.getElementById('bouton-voirPanier');
+selectVoirPanier.classList.remove("d-none");    // Afficher le BOUTON VOIR PANIER
+}
+
 // Création contenu MENU DEROULANT -quantite- de 1 à 20
 for (let q = 1; q <= 20; q++) {
     let menuQuantite = document.getElementById("choix-quantite");
@@ -209,7 +214,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         choixValide.classList.add("text-danger");
         choixCouleur.classList.add("border-danger");
     } else {
-        choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton.";
+        choixValide.innerHTML = "Votre choix a \u00e9t\u00e9 ajout\u00e9 au panier.<br />Pour ajouter d'autres oursons, cliquez sur le bouton 'Nouvelle s\u00e9lection'.";
         choixValide.classList.replace("text-danger", "text-success");
         choixValide.classList.add("text-success");
         let btnPanier = document.getElementById("bouton-panier");
@@ -246,6 +251,14 @@ let selectAjout = document.getElementById('bouton-ajout');
 selectAjout.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT
     document.location.reload(true); // Recharge la page
 });
+let selectVoirPanier = document.getElementById('bouton-voirPanier');
+selectVoirPanier.addEventListener('click', function (event) {   // Action apres clic sur BOUTON VOIR PANIER
+    selectVoirPanier.classList.remove("d-none");
+    document.location.href = "panier.html"; // Ouverture page Panier
+});
+
+
+
 
 
 // Quand reload page, afficher -Selectionnez- dans le menu des noms  

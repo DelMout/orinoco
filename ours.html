@@ -86,7 +86,7 @@
                     <div class="form-group">
                         <label for="choix-quantite">Choisissez le nombre de produits :</label>
                         <select name="quantite" id="choix-quantite" class="form-control">
-                            <!--Menu deroulant cree en js   - de 1 a 20--->  
+                            <!--Menu deroulant cree en js   - de 1 a 20--->
                         </select>
                     </div>
                 </form>
@@ -96,27 +96,33 @@
                 <div id="prix" class="my-2">
                     <p class="col-xl-4 col-lg-3 col-sm-2 col-4 bg-secondary text-light text-center p-2 my-0 font-weight-bold"> Prix : <span id="euros"></span>  </p>   <!--Affiche le prix-->
                 </div>
-                <div class="row mb-5">
-                    <div class="col font-weight-bold my-auto">
+                <div class="row mb-2">
+                    <div class="col-lg-7 col font-weight-bold my-auto">
                         <p id="valide" class="mb-0"></p> <!--Affiche un commentaire soit oubli sélection couleur ou faire un ajout-->
                     </div>
                     <div class="col text-right">
-                        <button type="button" id="bouton-panier" class="bg-success btn-lg text-light shadow-lg my-3">Ajouter<br />au panier</button>   <!--Bouton mis au panier-->
-                        <button type="button" id="bouton-ajout" class="bg-info d-none btn-lg text-light shadow-lg">+</button>   <!--Bouton ajout autres produits-->
+                        <button type="button" id="bouton-panier" class="btn-success btn-lg text-light shadow-lg font-weight-bold my-3">Ajouter<br />au panier</button>   <!--Bouton mis au panier-->
+                        <button type="button" id="bouton-ajout" class="btn-warning d-none btn-lg shadow-lg">Nouvelle<br />sélection</button>   <!--Bouton ajout autres produits-->
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <button type="button" id="bouton-voirPanier" class="btn-info d-none btn-lg shadow-lg btn-block my-3">Voir le panier</button>   <!--Bouton direction panier-->
+                    </div>
+                </div>
+                </div>
+                <div id="cadrePhoto2" class="col">
+                    <!--2e cadre photo pour PETIT ECRAN-->
+                    <div class="text-center text-primary font-weight-bold mx-auto my-3">
+                        <h2>
+                            <!--Ici Nom de l'ourson-->
+                        </h2>
+                    </div>
+                    <div id="photo2" class="photo text-center mb-5">
+                        <!-- ici la photo de l'article selectionne -->
                     </div>
                 </div>
             </div>
-            <div id="cadrePhoto2"class="col">            <!--2e cadre photo pour PETIT ECRAN-->
-                <div class="text-center text-primary font-weight-bold mx-auto my-3">
-                    <h2>
-                        <!--Ici Nom de l'ourson-->
-                    </h2>
-                </div>
-                <div id="photo2" class="photo text-center mb-5">
-                    <!-- ici la photo de l'article selectionne -->
-                </div>
-            </div>
-        </div>
     </div>
         <!-- PIED DE PAGE -->
     <footer class="jumbotron mb-0 mt-5 py-3">
@@ -128,7 +134,7 @@
                             <a class="text-dark " href="mentions.html">Mentions légales</a>
                         </div>
                         <div class="col text-center">
-                            <a class="text-dark " href="mailto:adresse@email.com">Contactez-nous</a>
+                            <a class="text-dark " href="mailto:adresse@email.com">Nous contacter</a>
                         </div>
                     </div>
                 </div>
