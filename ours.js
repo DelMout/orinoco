@@ -8,7 +8,7 @@ if (unNom == null) {
     // Commande enregistrée et envoyée, donc le localStorage peut être mis à 0
     localStorage.clear();
     localStorage.setItem("qteTotal", 0);
-    document.location.reload = true
+    document.location.reload = true;
 }
 
 
@@ -17,8 +17,9 @@ const nbProd = document.getElementById("nbreProd");
 nbProd.innerHTML = localStorage.getItem("qteTotal");
 
 if (localStorage.getItem("qteTotal") > 0) {     // Si Panier non vide
-let selectVoirPanier = document.getElementById('bouton-voirPanier');
-selectVoirPanier.classList.remove("d-none");    // Afficher le BOUTON VOIR PANIER
+    let selectVoirPanier = document.getElementById('bouton-voirPanier');
+    selectVoirPanier.classList.remove("d-none");    // Afficher le BOUTON VOIR PANIER
+    document.location.reload = true;
 }
 
 // Création contenu MENU DEROULANT -quantite- de 1 à 20
@@ -40,7 +41,7 @@ fetch("http://localhost:3000/api/teddies")
     })
     .then((a) => {
         for (let i = 0; i < a; i++) {
-        name(i);            // appel la fonction name
+            name(i);            // appel la fonction name
         }
     })
     .catch((err) => {
@@ -96,14 +97,14 @@ const color = (i) => {
             let parentOpt = document.getElementById("choix-couleur");
             let opt = parentOpt.children;
             let nbOpt = opt.length;
-            let ecart = nbOpt-1 - nbColors;   // Ecart entre Nbre ligns OPTION existantes et lignes COULEUR a afficher
+            let ecart = nbOpt - 1 - nbColors;   // Ecart entre Nbre ligns OPTION existantes et lignes COULEUR a afficher
             if (ecart > 0) {    // Supprimer des lignes OPTION
                 for (let s = 0; s < ecart; s++) {
                     parentOpt.removeChild(opt.item(1));
                 }
             } else {
                 if (ecart < 0) {    // Créer des lignes OPTION
-                    for (let c = 0; c < ecart*-1; c++) {
+                    for (let c = 0; c < ecart * -1; c++) {
                         let newOpt = document.createElement("option");
                         parentOpt.appendChild(newOpt);
                     }
@@ -118,7 +119,7 @@ const color = (i) => {
 }
 
 // FONCTION affiche AFFICHE le prix, la description, la photo du produit sélectionné - x étant le numéro dordre du nom , y quantité souhaité
-const affiche = (x,y) => {
+const affiche = (x, y) => {
     fetch("http://localhost:3000/api/teddies")
         .then((resp) => {
             return resp.json();
@@ -127,12 +128,12 @@ const affiche = (x,y) => {
             return all;
         })
         .then((tabl) => {
-            let obj = tabl[x-1];
+            let obj = tabl[x - 1];
             return obj;
         })
         .then((elem) => {
             let prix = elem.price;      //Prix du produit
-            localStorage.setItem("prix", prix/100); // Prix unitaire mis temporairement dans localStorage
+            localStorage.setItem("prix", prix / 100); // Prix unitaire mis temporairement dans localStorage
             let photo = elem.imageUrl;      // Photo du produit
             let description = elem.description;     // Description du produit
             let nom = elem.name;        // Nom de l'ourson
@@ -149,23 +150,23 @@ const affiche = (x,y) => {
                 let widthPhoto = "250";
                 affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
                 affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
-                
+
 
             } else if (window.matchMedia("(max-width:992px)").matches) {
                 let widthPhoto = "400";
-                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
-                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";
+                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";
 
             } else if (window.matchMedia("(max-width:1300px)").matches) {
                 let widthPhoto = "500";
-                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
-                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     
+                affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";
+                affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";
 
             } else {
                 affPhoto1.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
                 affPhoto2.innerHTML = "<img src=" + photo + " width='900' alt='ourson' class='photo' id='photoOurs' />"; // Grande largeur écran
             }
-                let nomH2 = document.getElementsByTagName("h2");
+            let nomH2 = document.getElementsByTagName("h2");
             nomH2[0].innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
             nomH2[1].innerHTML = nom;  // Ajout du NOM au-dessus photo sur page OURS
 
@@ -176,7 +177,7 @@ const affiche = (x,y) => {
                 cadrePhoto2.classList.add("d-none");
             }
         })
-        
+
 }
 
 // Actions avec souris-----
@@ -190,10 +191,10 @@ selectNom.addEventListener('change', function (event) {   // Action apres select
     localStorage.setItem("indexNom", selectionNom);   // stocke numero ordre du nom
     color(selectionNom); // Appel la fonction COLOR
     affiche(selectionNom, 1);   // Appel la fonction AFFICHE
-    
+
     const selectionQuantite = document.getElementById("choix-quantite").selectedIndex + 1;    //numero ordre de la QUANTITE
     localStorage.setItem("quantite", "1");     // Stockage de la quantite par défaut à 1
-    
+
 });
 let selectColor = document.getElementById('choix-couleur');
 selectColor.addEventListener('change', function (event) {   // Action apres selection de la COULEUR
@@ -221,8 +222,9 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         btnPanier.classList.add("d-none");          // Cacher le bouton PANIER
         let btnAjout = document.getElementById("bouton-ajout");
         btnAjout.classList.remove("d-none");        // Afficher le bouton AJOUT
+        selectVoirPanier.classList.remove("d-none");    // Afficher le BOUTON VOIR PANIER
         // Sauvegarde des données dans localStorage
-        if (localStorage.length <7) {   // Seulement le id et qté de renseignés
+        if (localStorage.length < 7) {   // Seulement le id et qté de renseignés
             localStorage.setItem("nbreLignes", 1);
         } else {
             let n = parseInt(localStorage.getItem("nbreLignes")) + 1;
@@ -245,7 +247,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         let couleur = "_" + n + "Couleur";
         localStorage.setItem(couleur, choixCouleur.value); // Ajout de la COULEUR dans localStorage
     }
-    
+
 });
 let selectAjout = document.getElementById('bouton-ajout');
 selectAjout.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT

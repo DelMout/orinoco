@@ -15,14 +15,10 @@ if (localStorage.length < 7) {
     parent.classList.add("table-sm");   // Réduire espacements dans tableau
     let nbLignes = localStorage.getItem("nbreLignes");
     let total = 0;  // Total des prix totaux
-    let qteTotal = 0; // Total des quantités
     // Ajout du contenu du tableau sur 2 COLONNES
     for (let n = 1; n <= nbLignes; n++) {
         const nCle5 = "_" + n + cle[5]; // Clé pour le prix total
         total = parseInt(localStorage.getItem(nCle5)) + total;
-        const nCle3 = "_" + n + cle[3]; // Clé pour la quantité
-        qteTotal = parseInt(localStorage.getItem(nCle3)) + qteTotal;
-        localStorage.setItem("qteTotal", qteTotal); // Quantité total des produits stockée dans localStorage
         for (let c = 0; c <= 5; c++) {
 
             const newTr = document.createElement("tr");
@@ -59,11 +55,18 @@ if (localStorage.length < 7) {
     newTh1.innerHTML = "TOTAL : " + total + " \u20ac";
 
 } else {                                                          // MEDIA QUERIES Grand format          
-    // Ajout de lignes au tableau de synthèse
     let parent = document.getElementById("tableau");
+    // Ajout LIGNE des TITRES des colonnes
+    const newTr = document.createElement("tr");
+    parent.appendChild(newTr);
+    for (let t = 0; t < 6; t++) {
+        let newTh = document.createElement("th");
+        newTr.appendChild(newTh);
+        newTh.innerHTML = titre[t];
+    }
+    // Ajout de lignes au tableau de synthèse
     let nbLignes = localStorage.getItem("nbreLignes");
     let total = 0;  // Total des prix totaux
-    let qteTotal = 0; // Total des quantités
     for (let n = 1; n <= nbLignes; n++) {
         const newTr = document.createElement("tr");
         parent.appendChild(newTr);
