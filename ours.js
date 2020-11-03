@@ -118,7 +118,7 @@ const color = (i) => {
         })
 }
 
-// FONCTION affiche AFFICHE le prix, la description, la photo du produit sélectionné - x étant le numéro dordre du nom , y quantité souhaité
+// FONCTION affiche AFFICHE le prix, la description, la photo du produit sélectionné - x étant le numéro dordre du nom , y quantité souhaitée
 const affiche = (x, y) => {
     fetch("http://localhost:3000/api/teddies")
         .then((resp) => {
@@ -150,7 +150,6 @@ const affiche = (x, y) => {
                 let widthPhoto = "250";
                 affPhoto1.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
                 affPhoto2.innerHTML = "<img src=" + photo + " width='" + widthPhoto + "' alt='ourson' class='photo' id='photoOurs' />";     // Affiche la photo du produit selectionne
-
 
             } else if (window.matchMedia("(max-width:992px)").matches) {
                 let widthPhoto = "400";
@@ -241,7 +240,7 @@ selectPanier.addEventListener('click', function (event) {   // Action apres clic
         localStorage.setItem("qteTotal", qteTotal); // Ajout de QUANTITE TOTALE dans localStorage
         nbProd.innerHTML = localStorage.getItem("qteTotal");    // Affichage en entete de QUANTITE TOTAL de produits
         let prix = "_" + n + "PrixUni";
-        localStorage.setItem(prix, localStorage.getItem("prix")); // Ajout de PRIX TOTAL dans localStorage
+        localStorage.setItem(prix, localStorage.getItem("prix")); // Ajout de PRIX unitaire dans localStorage
         let prixTot = "_" + n + "PrixTotal";
         localStorage.setItem(prixTot, localStorage.getItem("prixTotal")); // Ajout de PRIX TOTAL dans localStorage
         let couleur = "_" + n + "Couleur";
@@ -261,11 +260,7 @@ selectVoirPanier.addEventListener('click', function (event) {   // Action apres 
 
 
 
-
-
-// Quand reload page, afficher -Selectionnez- dans le menu des noms  
 if (document.location.reload = true) {
-    document.getElementById("choix-nom").selectedIndex = 0;     // Forcer le menu NOM sur la 1re option
     // Si sélection sur la page ACCUEIL, alors indexNom renseigné dans localStorage
     // Positionner le 1er menu déroulant sur cet index
     if (localStorage.getItem("indexNom") > 0) {

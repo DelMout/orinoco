@@ -222,6 +222,16 @@ const tableauPanier = () => {
 
 tableauPanier();
 
+// ACTION sur bouton AJOUT ARTICLE
+let ajoutArticle = document.getElementById('ajoutArt');
+ajoutArticle.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT ARTICLE
+    document.location.href = "ours.html"; // Ouverture page Produit
+    localStorage.setItem("indexNom", "0");  //Pas de sélection de nom ourson dans le menu déroulant
+});
+
+
+
+
 class Contact {     // Données pour ensuite créer lobjet "contact"
     constructor(firstName, lastName, address, city, email) {
         this.firstName = firstName;
@@ -251,7 +261,7 @@ validCommande.addEventListener('click', function (event) {   // Action apres cli
         const products = [];
         for (let n = 1; n <= nbLignes; n++) {
             let _nId = "_" + n + "Id";
-            products.push(localStorage.getItem(_nId));
+            products.push(localStorage.getItem(_nId));  // Ajout de données dans le tableau products
         }
         // Création objet CONTACT
         const contact = new Contact(prenom.value, nom.value, adresse.value, ville.value, email.value);
