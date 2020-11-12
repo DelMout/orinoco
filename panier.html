@@ -60,15 +60,16 @@
                     <div id="suppPanier" class="col my-lg-3 my-0 text-lg-right text-left">
                         <button type="button" id="bouton-reset" class="bg-danger btn-lg text-light shadow-lg">Vider le panier</button> <!--Bouton pour vider le panier-->
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-        <div class="row"> <!--Tableau de synthèse des produits-->
+        <div class="row">
+            <!--Tableau de synthèse des produits-->
             <table id="tableau" class="table table-hover col-xl-9 col-11 mx-auto text-center">
-               <!--Ici tableau avec données extraites du localStorage-->
+                <!--Ici tableau avec données extraites du localStorage-->
             </table>
-        </div> 
+        </div>
         <!--Formulaire sur le contact-->
         <div class="row formulaire">
             <h2 class="mx-auto py-4 text-dark bg-warning col-xl-9 col-11 text-center font-weight-bold">Merci de remplir ce formulaire</h2>
@@ -79,17 +80,17 @@
                     <div class="row mx-auto">
                         <div class="col-lg-7">
                             <label for="nom">* Votre nom :</label>
-                            <input type="text" id="nom" class="form-control" pattern="[A-Za-z' -]+" required>
+                            <input type="text" id="nom" class="form-control" pattern="[A-Za-zÀ-ÿ' -]+" required>
                         </div>
                         <div class="col-lg ">
                             <label for="prenom">* Votre prénom :</label>
-                            <input type="text" id="prenom" class="form-control" pattern="[A-Za-z-]+" required>
+                            <input type="text" id="prenom" class="form-control" pattern="[A-Za-zÀ-ÿ-]+" required>
                         </div>
                     </div>
                     <div class="row mx-auto mt-3">
                         <div class="col-lg">
                             <label for="adresse">* Votre adresse postale :</label>
-                            <input type="text" id="adresse" class="form-control" pattern="[0-9A-Za-z' ,-]+" required>
+                            <input type="text" id="adresse" class="form-control" pattern="[0-9A-Za-zÀ-ÿ' ,-]+" required>
                         </div>
                     </div>
                     <div class="row mx-auto mt-3">
@@ -99,19 +100,19 @@
                         </div>
                         <div class="col-lg-9">
                             <label for="ville">* Votre ville :</label>
-                            <input type="text" id="ville" class="form-control" pattern="[A-Za-z' -]+" required>
+                            <input type="text" id="ville" class="form-control" pattern="[A-Za-zÀ-ÿ' -]+" required>
                         </div>
                     </div>
                     <div class="row mx-auto mt-3 mb-5">
                         <div class="col-lg ">
                             <label for="email">* Votre adresse électronique :</label>
-                            <input type="email" id="email" class="form-control" pattern="[0-9a-z._-]+[@][0-9a-z._-]+[.][a-z]+" required>
+                            <input type="email" id="email" class="form-control" pattern="[0-9a-z._-]+[@][0-9a-z.-]+[.][a-z]+" required>
                         </div>
                     </div>
                     <div class="row mx-auto mt-2 mb-3 pl-4 ">
                         <div class="col-lg">
                             <input type="checkbox" id="radio" class="form-check-input" name="rgpd" required>
-                            <label class="form-check-label" for="rgpd">
+                            <label class="form-check-label" for="radio">
                                 En cochant cette case et en soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées
                                 pour me recontacter dans le cadre de ma demande indiquée dans ce formulaire. Aucun autre traitement ne sera
                                 effectué avec mes informations.
@@ -136,8 +137,8 @@
                 </div>
             </div>
         </div>
-    </div>        
-        <!-- PIED DE PAGE -->
+    </div>
+    <!-- PIED DE PAGE -->
     <footer class="jumbotron mb-0 mt-5 py-3">
         <div class="container-fluid ">
             <div class="row">
@@ -155,11 +156,11 @@
         </div>
     </footer>
 
-        <!-- Liens vers bibliothèques -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <!-- Liens vers fichier JS -->
-        <script type="text/javascript" src="panier.js"></script>
+    <!-- Liens vers bibliothèques -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Liens vers fichier JS -->
+    <script type="text/javascript" src="panier.js"></script>
 
 </body>
 </html>

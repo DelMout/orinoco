@@ -3,10 +3,10 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Orinoco personnalise pour vous votre ours en peluche fait main.">  
+    <meta name="description" content="Orinoco personnalise pour vous votre ours en peluche fait main.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Orinoco : Choix ours en peluche</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <!--ENTETE-->
@@ -45,14 +45,15 @@
     <!-- PRODUIT -->
     <div class="container-fluid my-3">
         <div id="choix" class="row mb-5">
-            <div id="cadrePhoto1" class="col d-none">    <!--1er cadre photo pour PETIT ECRAN-->
+            <div id="cadrePhoto1" class="col d-none">
+                <!--1er cadre photo pour PETIT ECRAN-->
                 <div class="text-center text-primary font-weight-bold mx-auto my-3">
                     <h2>
                         <!--Ici Nom de l'ourson-->
                     </h2>
                 </div>
                 <div id="photo1" class="text-center mb-5">
-                     <!--ici la photo de l'article selectionne--> 
+                    <!--ici la photo de l'article selectionne-->
                 </div>
             </div>
             <div id="infosOurs" class="col-xl-4 col-lg-5 text-left px-xl-5 px-2">
@@ -86,7 +87,7 @@
                     <div class="form-group">
                         <label for="choix-quantite">Choisissez le nombre de produits :</label>
                         <select name="quantite" id="choix-quantite" class="form-control">
-                            <!--Menu deroulant cree en js   - de 1 a 20--->
+                            <!--Menu deroulant cree en js    de 1 a 20-->
                         </select>
                     </div>
                 </form>
@@ -110,21 +111,21 @@
                         <button type="button" id="bouton-voirPanier" class="btn-info d-none btn-lg shadow-lg btn-block my-3">Voir le panier</button>   <!--Bouton direction panier-->
                     </div>
                 </div>
+            </div>
+            <div id="cadrePhoto2" class="col">
+                <!--2e cadre photo pour GRAND ECRAN-->
+                <div class="text-center text-primary font-weight-bold mx-auto my-3">
+                    <h2>
+                        <!--Ici Nom de l'ourson-->
+                    </h2>
                 </div>
-                <div id="cadrePhoto2" class="col">
-                    <!--2e cadre photo pour GRAND ECRAN-->
-                    <div class="text-center text-primary font-weight-bold mx-auto my-3">
-                        <h2>
-                            <!--Ici Nom de l'ourson-->
-                        </h2>
-                    </div>
-                    <div id="photo2" class="photo text-center mb-5">
-                        <!-- ici la photo de l'article selectionne -->
-                    </div>
+                <div id="photo2" class="photo text-center mb-5">
+                    <!-- ici la photo de l'article selectionne -->
                 </div>
             </div>
+        </div>
     </div>
-        <!-- PIED DE PAGE -->
+    <!-- PIED DE PAGE -->
     <footer class="jumbotron mb-0 mt-5 py-3">
         <div class="container-fluid ">
             <div class="row">
@@ -142,12 +143,12 @@
         </div>
     </footer>
 
-        <!-- Liens vers bibliothèques -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <!-- Liens vers API ours -->
+    <!-- Liens vers bibliothèques -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Liens vers API ours -->
 
-        <script type="text/javascript" src="ours.js"></script>
+    <script type="text/javascript" src="ours.js"></script>
 
 </body>
 </html>

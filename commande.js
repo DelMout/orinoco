@@ -85,7 +85,7 @@ if (localStorage.length < 7) {
     }
     // Afficher le prix total
     const newTfoot = document.createElement('tfoot');
-    newTfoot.classList.add("font-weight-bold","bg-dark","text-light");
+    newTfoot.classList.add("font-weight-bold", "bg-dark", "text-light");
     parent.appendChild(newTfoot);
     const newTd1 = document.createElement("td");
     newTfoot.appendChild(newTd1);

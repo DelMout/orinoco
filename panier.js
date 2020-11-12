@@ -25,10 +25,10 @@ selectReset.addEventListener('click', function (event) {   // Action apres clic 
 });
 
 // Fonction pour supprimer une ligne dans PANIER
-const supprLigneCommande = (n,nbLignes) => {    // Fonction pour SUPPRIMER une ligne du panier (sur tableau SM ou LG)
+const supprLigneCommande = (n, nbLignes) => {    // Fonction pour SUPPRIMER une ligne du panier (sur tableau SM ou LG)
     for (let i = 0; i < 6; i++) {
         let _ncle = "_" + n + cle[i];
-        localStorage.removeItem(_ncle); // Suppresion des données de cette ligne dans localStorage
+        localStorage.removeItem(_ncle); // Suppression des données de cette ligne dans localStorage
     }
     if (n < nbLignes) { // reindexation des lignes suivantes
         for (let e = n; e < nbLignes; e++) {
@@ -42,7 +42,7 @@ const supprLigneCommande = (n,nbLignes) => {    // Fonction pour SUPPRIMER une l
             }
         }
     }
-    // Suppresion de la dernière ligne du TABLEAU
+    // Suppression de la dernière ligne du TABLEAU
     const d = localStorage.getItem("nbreLignes");
     const qT = localStorage.getItem("qteTotal");
     const qcle = "_" + d + "Quantite";  // Clé de la quantité commandée sur la dernière ligne
@@ -51,7 +51,7 @@ const supprLigneCommande = (n,nbLignes) => {    // Fonction pour SUPPRIMER une l
         let _dcle = "_" + d + cle[i];
         localStorage.removeItem(_dcle);
     }
-    if (d <= "1") {
+    if (d <= "1") { // Si nbre de lignes initial <= 1 : Soit tableau vide en résultat
         localStorage.clear();
         localStorage.setItem("nbreLignes", 0);
         localStorage.setItem("qteTotal", 0);
@@ -145,7 +145,7 @@ const tableauPanier = () => {
             // Supprimer une ligne avec icone "PoubelleSM"
             const poubelleS = document.getElementById(poubelleSM);
             poubelleS.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleSM
-                supprLigneCommande(n,nbLignes);
+                supprLigneCommande(n, nbLignes);
             });
         }
         // Afficher le prix total
@@ -200,7 +200,7 @@ const tableauPanier = () => {
             // Supprimer une ligne avec icone "PoubelleLG"
             const poubelleL = document.getElementById(poubelleLG);
             poubelleL.addEventListener('click', function (event) {   // Action apres clic sur BOUTON poubelleLG
-                supprLigneCommande(n,nbLignes);
+                supprLigneCommande(n, nbLignes);
             });
         }
         // Afficher le prix total
@@ -227,6 +227,16 @@ let ajoutArticle = document.getElementById('ajoutArt');
 ajoutArticle.addEventListener('click', function (event) {   // Action apres clic sur BOUTON AJOUT ARTICLE
     document.location.href = "ours.html"; // Ouverture page Produit
     localStorage.setItem("indexNom", "0");  //Pas de sélection de nom ourson dans le menu déroulant
+});
+
+
+// FORMULAIRE : code postal, 00000 interdit
+const codePost = document.getElementById("code");
+code.addEventListener("input", function (event) {
+    //const codeValue = codePost.value;
+    if (codePost.value == "00") {
+        codePost.value = "Incorrect !";  // Renvoie le message "Incorrect !"
+    }
 });
 
 
