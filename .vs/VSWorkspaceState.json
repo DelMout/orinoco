@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\controllers",
+    "\\css",
     "\\models",
     "\\routes",
     "\\scss"
   ],
-  "SelectedNode": "\\panier.js",
+  "SelectedNode": "\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }

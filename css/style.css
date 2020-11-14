@@ -84,14 +84,6 @@ p {
     margin-bottom: 1rem;
 }
 
-abbr[title],
-abbr[data-original-title] {
-    text-decoration: underline;
-    text-decoration: underline dotted;
-    cursor: help;
-    border-bottom: 0;
-    text-decoration-skip-ink: none;
-}
 
 address {
     margin-bottom: 1rem;
@@ -4849,10 +4841,6 @@ input[type=button].btn-block {
             display: inline-block;
             width: 100%;
         }
-}
-
-.accordion {
-    overflow-anchor: none;
 }
 
     .accordion > .card {
