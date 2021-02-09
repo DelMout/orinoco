@@ -1,5 +1,25 @@
 # Orinoco #
+# Contruction d'un MVP site e-commerce
+## Construction de la partie frontend
+## Projet 5 formation Développeur web OpenClassrooms
 
+### Technologies
+* HTML
+* CSS 
+* Javascript
+* Bootstrap
+* Utilisation d'une API existante
+
+
+### Compétences évaluées
+* Créer un plan de test pour une application
+* Gérer des événements JavaScript
+* Interagir avec un web service avec JavaScript
+* Valider des données issues de sources externes
+
+
+
+***
 This is the back end server for Project 5 of the Junior Web Developer path.
 
 ### Prerequisites ###
