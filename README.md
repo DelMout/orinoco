@@ -1,7 +1,7 @@
 # Orinoco #
-# Contruction d'un MVP site e-commerce
-## Construction de la partie frontend
-## Projet 5 formation Développeur web OpenClassrooms
+* Contruction d'un MVP site e-commerce
+* Construction de la partie frontend
+* Projet 5 formation Développeur web OpenClassrooms
 
 ### Technologies
 * HTML
